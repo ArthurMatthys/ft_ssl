@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl_md5.h"
+#include "../ft_ssl/includes/ft_ssl_md5.h"
 
 static void		update_cursor(int *a, int *b)
 {
