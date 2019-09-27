@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/11 14:42:00 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/23 11:51:46 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 11:19:55 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,9 +43,11 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (!ssl_usage());
 	i = ssl_handle_input(&arguments, argc, argv);
-	if (i == 1)
+	if (i >= 1)
 	{
 		ft_clearargs(arguments);
+		if (i == 2)
+			ft_printf("-s requires one argument\n");
 		return (1);
 	}
 //	arguments->cmd->handler(&arguments);

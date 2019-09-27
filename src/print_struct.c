@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/13 14:32:00 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/22 15:52:52 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 09:29:12 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,9 @@ void	print_struct(t_arg **arguments)
 	it = *arguments;
 	while (it)
 	{
-		printf("Message to code : |%s|\n", it->msg);
-		printf("Command : |%s|\n", it->cmd->name);
-		printf("flag : |%i|\n", it->cmd->flag);
+		ft_printf("Message to code : |%s|\n", it->msg);
+		ft_printf("Command : |%s|\n", it->cmd->name);
+		ft_printf("flag : |%i|\n", it->cmd->flag);
 		it = it->next;
 	}
 }

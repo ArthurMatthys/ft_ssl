@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/15 13:40:26 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/23 17:43:54 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 17:02:01 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ static int	handle_following_arg(t_arg *new_arg, char *arg)
 	int		j;
 
 	j = find_flag(new_arg, arg);
-	if (!(new_arg->previous->cmd->flag & T_S))
+	if (!(new_arg->previous->cmd->flag & T_S) && !(new_arg->previous->cmd->flag & T_P))
 		j = new_arg->cmd->nb_flag;
 	return (j);
 }
@@ -78,5 +78,5 @@ int			ft_ssl_md5_parser(t_arg *new_arg, char **argv, int *i, int argc)
 			return (1);
 		(*i)++;
 	}
-	return (0);
+	return (2);
 }

@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/15 15:26:08 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/20 15:52:02 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 15:16:38 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@
 # define D0		0x10325476
 
 # define SIZE_BLOCK	512
+# define CHAR_P_BLOCK 64
 # define LEN_BYTES	8
 
 typedef union	u_block

@@ -6,31 +6,30 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/20 09:05:40 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/23 17:43:53 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 17:02:02 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_ssl.h"
 
-static int	ft_addloc(char **msg, char *line)
+static int	ft_addloc(char **msg, char *line, size_t len_line)
 {
 	char	*tmp;
 	size_t	len_msg;
-	size_t	len_line;
 	size_t	new_len;
 
+	tmp = NULL;
 	if (!(*msg))
 		len_msg = 0;
 	else
 		len_msg = ft_strlen(*msg);
-	len_line = ft_strlen(line);
 	new_len = len_msg + len_line + 1;
 	if (!(tmp = (char *)ft_memalloc(sizeof(char) * new_len)))
 		return (0);
 	tmp = ft_memcpy(tmp, *msg, len_msg);
 	tmp = ft_strncat(tmp, line, new_len);
-	tmp[new_len - 1] = '\n';
+	tmp[new_len - 1] = '\0';
 	free(*msg);
 	*msg = tmp;
 	return (1);
@@ -40,8 +39,9 @@ static int	ft_addloc(char **msg, char *line)
 t_arg	*get_stdin(t_cmd *cmd)
 {
 	t_arg	*new_arg;
+	int	size;
 	char	*msg;
-	char	*line;
+	char	line[READ_SIZE];
 	t_cmd	*cpy;
 
 	
@@ -52,12 +52,10 @@ t_arg	*get_stdin(t_cmd *cmd)
 		return (NULL);
 	*cpy = *cmd;
 	new_arg->cmd = cpy;
-	while (get_next_line(0, &line))
+	while ((size = read(0, line, READ_SIZE)) > 0)
 	{
-		ft_addloc(&msg, line);
-		free(line);
+		ft_addloc(&msg, line, size);
 	}
-	free(line);
 	if (!msg)
 		new_arg->msg = "";
 	else
@@ -68,17 +66,30 @@ t_arg	*get_stdin(t_cmd *cmd)
 
 static int		open_file(t_arg *argument)
 {
-	struct stat buf;
+	struct	stat buf;
+	int		fd;
+
+	fd = open(argument->msg, O_RDONLY);
 	if (argument->cmd->flag & T_P)
 		return (0);
-	return (1);
+	if (fd < 0)
+		return (-1);
+	if (fstat(fd, &(buf)) < 0)
+	{
+		ft_printf("ERROR : Failed to get filedescriptor stats.\n");
+		return (-1);
+	}
+	if (buf.st_mode == 16877)
+		return (-1);
+	return (fd);
 }
 
-int		read_file(t_arg *argument)
+int		read_file(t_arg *argument, size_t *size_tot)
 {
 	int		fd;
+	int		size;
 	char	*msg;
-	char	*line;
+	char	line[READ_SIZE + 1];
 
 	msg = NULL;
 	if ((argument->cmd->flag & T_P) && (argument->cmd->flag & T_PDONE))
@@ -86,17 +97,16 @@ int		read_file(t_arg *argument)
 		argument->msg = "";
 		return (1);
 	}
-	fd = argument->cmd->flag & T_P ? 0 : open(argument->msg, O_RDONLY);
-	ft_printf("filename : %s\tfd -> %d\n", argument->msg, fd);
+	fd = open_file(argument);
 	if (fd < 0)
 		return (0);
-	while (get_next_line(fd, &line))
+	while ((size = read(fd, line, READ_SIZE)) > 0)
 	{
-		ft_addloc(&msg, line);
-		free(line);
+		line[size] = 0;
+		ft_addloc(&msg, line, size);
+		*size_tot += size;
 	}
 	free_fd();
-	free(line);
 	if (!msg)
 		argument->msg = "";
 	else

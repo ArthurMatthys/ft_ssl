@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/11 14:52:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/23 17:43:52 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/09/24 11:50:30 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,8 @@
 
 # define NB_CMD		2
 # define NB_FLAG_MAX	4
+
+# define READ_SIZE 4096
 
 typedef int			(*t_handler)();
 
@@ -66,7 +68,7 @@ int					ssl_list_command(char *cmd);
 int					ssl_handle_input(t_arg **arguments, int argc, char **argv);
 int					ssl_handle_md5(t_arg *arguments, char **argv);
 int					ft_ssl_md5_parser(t_arg *new_arg, char **argv, int *i, int argc);
-int					read_file(t_arg *argument);
+int					read_file(t_arg *argument, size_t *size);
 void				ft_memrev(unsigned char *ptr, int size);
 void				print_struct(t_arg **arguments);
 void				ft_ssl_md5_print(t_arg *argument, unsigned *sum, char *filename);
