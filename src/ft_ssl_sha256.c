@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "../includes/ft_ssl.h"
 
 int		ft_ssl_sha256(t_arg *arguments)
 {

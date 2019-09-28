@@ -10,8 +10,9 @@
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-#include "ft_ssl.h"
-#include "ft_ssl_md5.h"
+
+#include "../includes/ft_ssl.h"
+#include "../includes/ft_ssl_md5.h"
 
 static void		ft_ssl_print_hexa(unsigned *sum, int size)
 {
@@ -43,9 +44,9 @@ void		ft_ssl_md5_print(t_arg *argument, unsigned *sum, char *filename)
 	if (!(argument->cmd->flag & (T_Q | T_P)))
 	{
 		if (!(argument->cmd->flag & T_R) && (filename))
-			ft_printf("%s (%s) = ", argument->cmd->name, filename);
+			ft_printf("%s (%s) = ", argument->cmd->to_print, filename);
 		else if (!(argument->cmd->flag & T_R))
-			ft_printf("%s (\"%s\") = ", argument->cmd->name, argument->msg);
+			ft_printf("%s (\"%s\") = ", argument->cmd->to_print, argument->msg);
 	}
 	ft_ssl_print_hexa(sum, argument->cmd->nb_unsigned);
 	if (!(argument->cmd->flag & (T_Q | T_P)))

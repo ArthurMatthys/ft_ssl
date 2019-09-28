@@ -43,6 +43,7 @@ typedef struct		s_cmd
 {
 	int				index;
 	char			*name;
+	char			*to_print;
 	t_handler		handler;
 	t_handler		parser;
 	char			*flags[NB_FLAG_MAX];

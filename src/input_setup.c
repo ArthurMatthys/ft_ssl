@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "../includes/ft_ssl.h"
 
 static t_cmd	*check_cmd(t_cmd *cmd, char *str)
 {

@@ -11,11 +11,11 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "../includes/ft_ssl.h"
 
 t_cmd g_cmd[2] =
 {
-	{0, "md5", &ft_ssl_md5, &ft_ssl_md5_parser, {"-s", "-r", "-q", "-p"}, 0, 4, 4},
-	{1, "sha256", &ft_ssl_sha256, &ft_ssl_md5_parser,
+	{0, "md5", "MD5", &ft_ssl_md5, &ft_ssl_md5_parser, {"-s", "-r", "-q", "-p"}, 0, 4, 4},
+	{1, "sha256", "SHA256", &ft_ssl_sha256, &ft_ssl_md5_parser,
 		{"-s", "-r", "-q", "-p"}, 0, 4, 8}
 };

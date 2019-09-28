@@ -11,7 +11,7 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl_md5.h"
+#include "../includes/ft_ssl_md5.h"
 
 static int		padding_md5(t_arg *arguments, t_block	**block, size_t size)
 {
@@ -26,7 +26,7 @@ static int		padding_md5(t_arg *arguments, t_block	**block, size_t size)
 	len = size ? size : ft_strlen(arguments->msg);
 	tot_bits = len * LEN_BYTES;
 	nbr_block = (tot_bits / SIZE_BLOCK) + ((tot_bits % SIZE_BLOCK) > 448 ? 2 : 1);
-	ft_printf("nbr_block : %d\tsize : %lu\n", nbr_block, tot_bits * 8);
+//	ft_printf("nbr_block : %d\tsize : %lu\n", nbr_block, tot_bits * 8);
 	if (!(*block = (t_block *)ft_memalloc(sizeof(t_block) * (nbr_block))))
 		return (ssl_usage());
 	while (i < len)
@@ -34,7 +34,7 @@ static int		padding_md5(t_arg *arguments, t_block	**block, size_t size)
 		(*block)[i / CHAR_P_BLOCK].c[i % CHAR_P_BLOCK] = (unsigned char)(arguments->msg[i]);
 		i++;
 	}
-	ft_printf("ending point : %d\n", i * CHAR_P_BLOCK);
+//	ft_printf("ending point : %d\n", i * CHAR_P_BLOCK);
 	(*block)[i / CHAR_P_BLOCK].c[i % CHAR_P_BLOCK] = 0x80;
 	i++;
 	while ((i * CHAR_P_BLOCK) % SIZE_BLOCK != 448)
@@ -42,7 +42,7 @@ static int		padding_md5(t_arg *arguments, t_block	**block, size_t size)
 		(*block)[i / CHAR_P_BLOCK].c[i % CHAR_P_BLOCK] = 0;
 		i++;
 	}
-	ft_printf("ending fill : %d\n", i * CHAR_P_BLOCK);
+//	ft_printf("ending fill : %d\n", i * CHAR_P_BLOCK);
 	((*block)[i / CHAR_P_BLOCK]).s[7] = tot_bits;
 /*	for (int k = 0; k < nbr_block; k++)
 	{
