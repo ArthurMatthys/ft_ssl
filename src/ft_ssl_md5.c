@@ -19,10 +19,8 @@ static int		padding_md5(t_arg *arguments, t_block	**block, size_t size)
 	int		nbr_block;
 	size_t	i;
 	size_t	len;
-	int		j;
 
 	i = 0;
-	j = 0;
 	len = size ? size : ft_strlen(arguments->msg);
 	tot_bits = len * LEN_BYTES;
 	nbr_block = (tot_bits / SIZE_BLOCK) + ((tot_bits % SIZE_BLOCK) > 448 ? 2 : 1);
