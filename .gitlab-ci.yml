@@ -3,6 +3,9 @@ image : python:3.6
 before_script:
     - python3 -V
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 stages:
     - build
     - test
@@ -21,3 +24,4 @@ test:
         - python3
     script:
         - python3 run_test.py
+    coverage: /TOTAL\s+\d+\s+\d+\s+(\d+)%$/
