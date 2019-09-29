@@ -1,0 +1,18 @@
+stages:
+    -build
+    -test
+
+build:
+    stage: build
+    tags:
+        -osx
+    script:
+        -make
+
+test:
+    stage: test
+    tags:
+        -osx
+        -python3
+    script:
+        -python3 run_test.py

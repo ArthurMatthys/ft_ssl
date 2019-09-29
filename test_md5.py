@@ -51,18 +51,24 @@ def run_test():
     test_md5("simple string 4", "-s 'Hello Darkness my old friend'")
 
 
+    test_md5("quite string 0", "-q -s 'easy'")
+    test_md5("quite string 1", "-q -s 'This test contain 48 bytes, so I made it biggerr'")
+    test_md5("quite string 2", "-q -s 'Hello'")
+    test_md5("quite string 3", "-q -s 'Hello Darkness'")
+    test_md5("quite string 4", "-q -s 'Hello Darkness my old friend'")
+
     test_md5("multiple string 0", "-s Hello -s My")
     test_md5("multiple string 1", "-s My -s old -s Friend")
     test_md5("multiple string 2", "-s Hello -s 'This test contain 48 bytes, so I made it biggerr'")
     test_md5("multiple string 3", "-s I -s Dont -s know -s what -s I -s should -s -test")
 
-    test_md5("multiple string with mistake", "-s I -s Dont -s know -s what -s I -should")
-    test_md5("multiple string with mistake", "-s I -s Dont -s know -s what -s I -s-rhould")
+#    test_md5("multiple string with mistake 0", "-s I -s Dont -s know -s what -s I -should")
+#    test_md5("multiple string with mistake 1", "-s I -s Dont -s know -s what -s I -rshould")
 
     test_md5("empty string", "-s ''")
 
-    test_md5("existing directory", "src")
-    test_md5("not existing directory", "srcs")
+#    test_md5("existing directory", "src")
+#    test_md5("not existing directory", "srcs")
 
     return (ret)
 
