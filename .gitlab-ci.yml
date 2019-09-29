@@ -1,18 +1,23 @@
+image : python:latest
+
+before_script:
+    - python -V
+
 stages:
-    -build
-    -test
+    - build
+    - test
 
 build:
     stage: build
     tags:
-        -osx
+        - osx
     script:
-        -make
+        - make
 
 test:
     stage: test
     tags:
-        -osx
-        -python3
+        - osx
+        - python3
     script:
-        -python3 run_test.py
+        - python3 run_test.py
