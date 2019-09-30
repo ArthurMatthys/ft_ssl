@@ -14,4 +14,4 @@ test:
     tags:
         - osx
     script:
-        - ./test_md5.sh
+        - ./test_ssl.sh
