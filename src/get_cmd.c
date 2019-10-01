@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_ssl.h                                         .::    .:/ .      .::   */
+/*   get_cmd.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/09/30 15:58:32 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/30 16:42:46 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/09/30 16:05:59 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/09/30 16:47:27 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef FT_SSL_H
-# define FT_SSL_H
+#include "ft_ssl.h"
 
-# include "libft.h"
-# include "ft_printf.h"
-
-# define NB_CMD 2
-
-typedef	void	(*t_handler)();
-
-typedef struct	s_list_cmd
+const t_list_cmd g_list_cmd[NB_CMD] = 
 {
-	char		*name;
-	t_handler	handler;
-	int			index;
-}				t_list_cmd;
+	{"md5", &ssl_hash, 0},
+	{"sha256", &ssl_hash, 1}
+};
 
 
-void	get_command(int argc, char **argv);
-int		ssl_usage(void);
-int		ssl_list_command(char *cmd);
+void	get_command(int argc, char **argv)
+{
+	int	i;
 
-void	ssl_hash(int argc, char **argv, int index);
-
-#endif
+	i = 0;
+	while (i < NB_CMD)
+	{
+		if (ft_strequ(argv[1], g_list_cmd[i].name))
+		{
+			g_list_cmd[i].handler(argc, argv, i);
+			return;
+		}
+		i++;
+	}
+	ssl_list_command(argv[1]);
+}

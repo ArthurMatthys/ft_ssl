@@ -17,7 +17,6 @@ test_md5 ()
 	printf "MD5 -> %s" "$1"
 	if [ -z $3 ]
 	then
-#		test "$(${MD5_PERSO} $2)" = "$(${MD5_ORIGIN} $2)"
 		(eval ${MD5_PERSO} $2) > my_hash.output
 		(eval ${MD5_ORIGIN} $2) > origin_hash.output
 	else

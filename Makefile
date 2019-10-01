@@ -22,13 +22,11 @@ SRCDIR = ./src/
 OBJDIR = ./obj/
 INCDIR = ./includes/
 LFTDIR = ./libft/
-H_FILE = $(INCDIR)ft_ssl.h $(INCDIR)ft_ssl_md5.h
+H_FILE = $(INCDIR)ft_ssl.h $(INCDIR)ft_ssl_hash.h
 
 INCLUDE = -I $(INCDIR) -I $(LFTDIR)includes
 
-SRC = cmd.c ft_ssl.c ft_ssl_md5.c ft_ssl_sha256.c input_setup.c \
-	  utils_general.c  print_struct.c ft_ssl_md5_parser.c \
-	  ft_ssl_md5_fct.c ft_ssl_md5_cst.c ft_getstdin.c ft_ssl_print.c
+SRC = ft_ssl.c ft_ssl_usage.c get_cmd.c ssl_hash.c 
 
 C_FILES = $(addprefix $(SRCDIR), $(SRC))
 O_FILES = $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(C_FILES))

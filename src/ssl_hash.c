@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   print_struct.c                                   .::    .:/ .      .::   */
+/*   ssl_hash.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/09/13 14:32:00 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/09/24 09:29:12 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/01 08:57:39 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/ft_ssl.h"
+#include "ft_ssl.h"
+#include "ft_ssl_hash.h"
 
-void	print_struct(t_arg **arguments)
+t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION]=
 {
-	t_arg	*it;
+			
+};
 
-	it = *arguments;
-	while (it)
-	{
-		ft_printf("Message to code : |%s|\n", it->msg);
-		ft_printf("Command : |%s|\n", it->cmd->name);
-		ft_printf("flag : |%i|\n", it->cmd->flag);
-		it = it->next;
-	}
+void	ssl_hash(int argc, char **argv, int index)
+{
+	(void)argc;
+	(void)argv;
+	(void)index;
+	ft_printf("Great job\n");
 }
