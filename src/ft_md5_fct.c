@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 10:08:48 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 11:19:04 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 18:06:42 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,14 @@
 
 uint32_t	f0(t_alltypes *registers)
 {
-	return ((registers[1].x32 & registers[2].x32) | ((~registers[1].x32) & registers[3].x32));
+	return ((registers[1].x32 & registers[2].x32) |
+			((~registers[1].x32) & registers[3].x32));
 }
 
 uint32_t	f1(t_alltypes *registers)
 {
-	return ((registers[3].x32 & registers[1].x32) | ((~registers[3].x32) & registers[2].x32));
+	return ((registers[3].x32 & registers[1].x32) |
+			((~registers[3].x32) & registers[2].x32));
 }
 
 uint32_t	f2(t_alltypes *registers)
@@ -32,4 +34,3 @@ uint32_t	f3(t_alltypes *registers)
 {
 	return (registers[2].x32 ^ (registers[1].x32 | (~registers[3].x32)));
 }
-

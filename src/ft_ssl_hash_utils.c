@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 16:48:29 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 18:28:20 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,6 @@ static void		ft_ssl_print_sum(t_hash_cmd h_cmd, t_hash_use *h_use)
 	t_alltypes	sum;
 
 	i = 0;
-	ft_printf("yoooo\n");
 	while (i < h_cmd.nb_register)
 	{
 		j = 0;
@@ -34,16 +33,25 @@ static void		ft_ssl_print_sum(t_hash_cmd h_cmd, t_hash_use *h_use)
 	}
 }
 
-
-void		ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
+void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
 {
-	if (flag & H_P || flag & H_Q)
+	if (flag & H_P || flag & H_Q || !h_use->arg)
 		ft_ssl_print_sum(h_cmd, h_use);
-
-
+	else if (flag & H_R)
+	{
+		ft_ssl_print_sum(h_cmd, h_use);
+		ft_printf(flag & H_S ? " \"%s\"\n" : " %s\n", h_use->arg);
+	}
+	else
+	{
+		ft_printf(flag & H_S ? "%s (\"%s\") = " : "%s (%s) = ",
+				h_cmd.to_print, h_use->arg);
+		ft_ssl_print_sum(h_cmd, h_use);
+		ft_printf("\n");
+	}
 }
 
-unsigned	rot_32(unsigned  word, short rot)
+unsigned		rot_32(unsigned word, short rot)
 {
 	return ((word << rot) | (word >> (32 - rot)));
 }

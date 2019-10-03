@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:40:58 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 08:58:05 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 18:08:07 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,13 +31,13 @@ int	ssl_list_command(char *cmd)
 	return (0);
 }
 
-void error_open(char *str, char *cmd_name, int fd)
+int	error_open(char *str, char *cmd_name, int fd)
 {
 	if (fd == FD_NOTFOUND)
 		ft_printf("%s: %s: No such file or directory\n", cmd_name, str);
 	else if (fd == FD_NSTATS)
 		ft_printf("ERROR : Failed to get filedescriptor stats.\n");
-	if (fd == FD_DIR)
+	else if (fd == FD_DIR)
 		ft_printf("%s: %s: Is a directory\n", cmd_name, str);
-
+	return (0);
 }

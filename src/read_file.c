@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/03 11:30:17 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 15:17:19 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 18:12:21 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 int		open_arg(char *str)
 {
-	struct	stat buf;
-	int		fd;
+	struct stat	buf;
+	int			fd;
 
 	fd = open(str, O_RDONLY);
 	if (fd < 0)

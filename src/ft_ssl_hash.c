@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 15:59:26 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 18:11:01 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,14 +17,16 @@
 t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION] =
 {
 	{"md5", "MD5", &ft_md5_init, &ft_md5_update, &ft_md5_close, \
-		{"-s", "-r", "-q", "-p"}, 64, 32, 4, 4, 8}	
+		{"-s", "-r", "-q", "-p"}, 64, 32, 4, 4, 8},
+	{}
 };
 
 void	hash_init(t_hash_cmd cmd, t_hash_use *hash)
 {
 	hash->registers = (t_alltypes *)ft_memalloc_wrapper(sizeof(char) * 
 			cmd.nb_register * cmd.size_register);
-	hash->block = (t_alltypes *)ft_memalloc_wrapper(sizeof(char) * cmd.len_block);
+	hash->block = (t_alltypes *)ft_memalloc_wrapper(sizeof(char) * 
+			cmd.len_block);
 	ft_bzero(hash->block, cmd.len_block);
 }
 
@@ -55,17 +57,17 @@ static int	find_flag(int argc, char **argv, unsigned *flag, t_hash_cmd h_cmd)
 		while (j < NB_FLAG_HASH)
 		{
 			if (ft_strequ(argv[i], h_cmd.flag_list[j]))
-				break;
+				break ;
 			j++;
 		}
 		if (j == NB_FLAG_HASH)
-			return i;
+			return (i);
 		*flag |= (1 << j);
 		if (j == 3)
-			return i;
+			return (i);
 		i++;
 		if (!j)
-			return i;
+			return (i);
 	}
 	return (i);
 }
