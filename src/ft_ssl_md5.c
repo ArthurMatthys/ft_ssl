@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/02 09:08:37 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 16:30:24 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,10 +83,10 @@ t_hash_cst	 g_hash_cst[64] = {
 void	ft_md5_init(t_hash_cmd cmd, t_hash_use *hash)
 {
 	hash_init(cmd, hash);
-	hash->registers[0] = 0x67452301;
-	hash->registers[1] = 0xefcdab89;
-	hash->registers[2] = 0x98badcfe;
-	hash->registers[3] = 0x10325476;
+	hash->registers[0].x32 = 0x67452301;
+	hash->registers[1].x32 = 0xefcdab89;
+	hash->registers[2].x32 = 0x98badcfe;
+	hash->registers[3].x32 = 0x10325476;
 }
 
 static void	ft_md5_fct(t_hash_cst cst, t_hash_use *hash)
@@ -95,12 +95,12 @@ static void	ft_md5_fct(t_hash_cst cst, t_hash_use *hash)
 
 	(void)cst;
 	tmp = 0;
-	tmp = hash->registers[1] + rot_32(hash->registers[0] + \
-			cst.fct(hash->registers) + cst.sines + hash->block[cst.word], cst.rot);
+	tmp = hash->registers[1].x32 + rot_32(hash->registers[0].x32 + \
+			cst.fct(hash->registers) + cst.sines + hash->block[cst.word].x32, cst.rot);
 	hash->registers[0] = hash->registers[3];
 	hash->registers[3] = hash->registers[2];
 	hash->registers[2] = hash->registers[1];
-	hash->registers[1] = tmp;
+	hash->registers[1].x32 = tmp;
 }
 
 void	ft_md5_update(t_hash_use *hash)
@@ -109,11 +109,14 @@ void	ft_md5_update(t_hash_use *hash)
 
 	i = 0;
 	while (i < 64)
+	{
 		ft_md5_fct(g_hash_cst[i], hash);
+		i++;
+	}
 }
 
-void	ft_md5_close(t_hash_use *hash)
+void	ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
 {
-	hash_destroy(hash);
-	(void)hash;
+	ft_ssl_print_hash(h_cmd, h_use, flag);
+	hash_destroy(h_use);
 }

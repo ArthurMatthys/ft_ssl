@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/02 16:48:00 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 16:29:46 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,8 +30,10 @@
 # define C_FILE 2
 # define C_STRING 3
 
+
 typedef struct	s_hash_cmd
 {
+	char		*cmd;
 	char		*to_print;
 	t_handler	init;
 	t_handler	update;
@@ -40,13 +42,15 @@ typedef struct	s_hash_cmd
 	unsigned	len_block;
 	unsigned	len_output;
 	unsigned	nb_register;
+	unsigned	size_register;
+	unsigned	size_len;
 }				t_hash_cmd;
 
 typedef struct	s_hash_use
 {
-	size_t		len_msg;
-	unsigned	*block;
-	unsigned	*registers;
+	t_alltypes	len_msg;
+	t_alltypes	*block;
+	t_alltypes	*registers;
 	char		*arg;
 }				t_hash_use;
 
@@ -71,6 +75,7 @@ void		hash_init(t_hash_cmd cmd, t_hash_use *hash);
 void		hash_destroy(t_hash_use *hash);
 
 void		ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag, int whcase, char *arg);
+void		ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash, int flag);
 
 unsigned	rot_32(unsigned f, short g);
 
@@ -79,12 +84,12 @@ unsigned	rot_32(unsigned f, short g);
 */
 
 void	ft_md5_init(t_hash_cmd cmd, t_hash_use *hash);
-void	ft_md5_update();
-void	ft_md5_close(t_hash_use *hash);
+void	ft_md5_update(t_hash_use *h_use);
+void	ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use, int flag);
 
-unsigned	f0(unsigned *abcd);
-unsigned	f1(unsigned *abcd);
-unsigned	f2(unsigned *abcd);
-unsigned	f3(unsigned *abcd);
+uint32_t	f0(t_alltypes *abcd);
+uint32_t	f1(t_alltypes *abcd);
+uint32_t	f2(t_alltypes *abcd);
+uint32_t	f3(t_alltypes *abcd);
 
 #endif

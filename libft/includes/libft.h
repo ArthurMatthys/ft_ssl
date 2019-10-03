@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/01 14:53:06 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 12:02:28 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,15 @@ typedef struct		s_matrix
 	size_t			nbrline;
 	size_t			nbrcol;
 }					t_matrix;
+
+typedef union		u_alltypes
+{
+	uint8_t			x8;
+	uint32_t		x32;
+	uint64_t		x64;
+	__uint128_t		x128;
+	unsigned char	c[16];
+}					t_alltypes;
 
 void				ft_bzero(void *s, size_t n);
 void				ft_strdel(char **as);

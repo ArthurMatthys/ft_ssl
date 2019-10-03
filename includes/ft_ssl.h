@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 15:58:32 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/02 08:44:20 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/03 15:17:44 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,12 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/ft_printf.h"
+# include <sys/stat.h>
+# include <fcntl.h>
+
+# define FD_NOTFOUND 1
+# define FD_NSTATS 2
+# define FD_DIR 3
 
 # define NB_CMD 2
 
@@ -32,6 +38,9 @@ typedef struct	s_list_cmd
 void	get_command(int argc, char **argv);
 int		ssl_usage(void);
 int		ssl_list_command(char *cmd);
+void 	error_open(char *str, char *cmd_name, int fd);
+int		open_arg(char *str);
+int		read_fd(t_alltypes *buff, int fd, int to_read);
 
 void	ssl_hash(int argc, char **argv, int index);
 
