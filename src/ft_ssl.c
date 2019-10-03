@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 15:57:56 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/01 09:01:54 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/02 09:01:51 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl.h"
+#include "../includes/ft_ssl.h"
 
 int		main(int argc, char **argv)
 {

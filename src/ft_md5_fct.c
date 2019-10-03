@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 10:08:48 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/01 10:09:10 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/02 09:06:47 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl_hash.h"
+#include "../includes/ft_ssl_hash.h"
 
 unsigned	f0(unsigned *abcd)
 {

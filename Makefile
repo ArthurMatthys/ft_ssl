@@ -26,8 +26,8 @@ H_FILE = $(INCDIR)ft_ssl.h $(INCDIR)ft_ssl_hash.h
 
 INCLUDE = -I $(INCDIR) -I $(LFTDIR)includes
 
-SRC = ft_ssl.c ft_ssl_usage.c get_cmd.c ssl_hash.c  \
-	  ft_md5_fct.c ft_ssl_md5.c
+SRC = ft_ssl.c ft_ssl_usage.c get_cmd.c ft_ssl_hash.c  \
+	  ft_md5_fct.c ft_ssl_md5.c ft_ssl_utils.c ft_ssl_hash_routine.c
 
 C_FILES = $(addprefix $(SRCDIR), $(SRC))
 O_FILES = $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(C_FILES))

@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/01 17:23:32 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/02 09:08:37 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_ssl_hash.h"
+#include "../includes/ft_ssl_hash.h"
 
 t_hash_cst	 g_hash_cst[64] = {
 	{&f0, 0xd76aa478, 7, 0},
@@ -95,8 +95,8 @@ static void	ft_md5_fct(t_hash_cst cst, t_hash_use *hash)
 
 	(void)cst;
 	tmp = 0;
-//	tmp = hash->registers[1] + rot_32(hash->registers[0] + \
-//			cst.fct(hash->registers) + cst.sines + hash->block[word], cst.rot)
+	tmp = hash->registers[1] + rot_32(hash->registers[0] + \
+			cst.fct(hash->registers) + cst.sines + hash->block[cst.word], cst.rot);
 	hash->registers[0] = hash->registers[3];
 	hash->registers[3] = hash->registers[2];
 	hash->registers[2] = hash->registers[1];

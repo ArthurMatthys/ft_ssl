@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/01 17:41:25 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/02 16:48:00 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,9 @@
 # define H_PDONE (1 << 4)
 # define H_STRING (1 << 5)
 
+# define C_STDIN 1
+# define C_FILE 2
+# define C_STRING 3
 
 typedef struct	s_hash_cmd
 {
@@ -44,6 +47,7 @@ typedef struct	s_hash_use
 	size_t		len_msg;
 	unsigned	*block;
 	unsigned	*registers;
+	char		*arg;
 }				t_hash_use;
 
 typedef unsigned (*t_fct)();
@@ -65,6 +69,10 @@ t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION];
 
 void		hash_init(t_hash_cmd cmd, t_hash_use *hash);
 void		hash_destroy(t_hash_use *hash);
+
+void		ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag, int whcase, char *arg);
+
+unsigned	rot_32(unsigned f, short g);
 
 /*
  * MD5
