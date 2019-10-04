@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 18:11:01 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/04 11:37:32 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,10 @@ void	hash_init(t_hash_cmd cmd, t_hash_use *hash)
 			cmd.nb_register * cmd.size_register);
 	hash->block = (t_alltypes *)ft_memalloc_wrapper(sizeof(char) * 
 			cmd.len_block);
+	ft_bzero(hash->registers, cmd.nb_register * cmd.size_register);
 	ft_bzero(hash->block, cmd.len_block);
+	hash->arg = NULL;
+	hash->len_msg.x128 = 0;
 }
 
 void	hash_destroy(t_hash_use *hash)

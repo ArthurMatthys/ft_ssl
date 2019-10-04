@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 18:13:59 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/04 12:29:27 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,8 +93,6 @@ static void	ft_md5_fct(t_hash_cst cst, t_hash_use *hash)
 {
 	unsigned	tmp;
 
-	(void)cst;
-	tmp = 0;
 	tmp = hash->registers[1].x32 + rot_32(hash->registers[0].x32 +
 			cst.fct(hash->registers) + cst.sines + hash->block[cst.word].x32,
 			cst.rot);

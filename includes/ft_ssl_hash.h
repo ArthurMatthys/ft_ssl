@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 18:16:55 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/04 08:50:33 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,7 +77,7 @@ void			ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag,
 		int whcase, char *arg);
 void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash,
 		int flag);
-
+void			print_block(t_hash_cmd h_cmd, t_hash_use *h_use);
 unsigned		rot_32(unsigned f, short g);
 
 /*
