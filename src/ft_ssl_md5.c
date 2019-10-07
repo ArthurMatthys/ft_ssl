@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/07 14:46:36 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/07 15:51:44 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -119,11 +119,7 @@ int			ft_md5_update(t_hash_use *hash)
 	}
 	j = -1;
 	while (++j < 4)
-	{
 		hash->registers[j].x32 += reg[j].x32;
-		ft_printf("%d\n", hash->registers[j].x32);
-	}
-	ft_printf("\n");
 	return (1);
 }
 
