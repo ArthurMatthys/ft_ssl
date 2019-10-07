@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/04 12:29:27 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/07 10:18:23 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,29 +89,38 @@ void		ft_md5_init(t_hash_cmd cmd, t_hash_use *hash)
 	hash->registers[3].x32 = 0x10325476;
 }
 
-static void	ft_md5_fct(t_hash_cst cst, t_hash_use *hash)
+static void	ft_md5_fct(t_hash_cst cst, t_alltypes *reg, t_blockx32 *block)
 {
 	unsigned	tmp;
 
-	tmp = hash->registers[1].x32 + rot_32(hash->registers[0].x32 +
-			cst.fct(hash->registers) + cst.sines + hash->block[cst.word].x32,
+	tmp = reg[1].x32 + rot_32(reg[0].x32 +
+			cst.fct(reg) + cst.sines + block[cst.word].i,
 			cst.rot);
-	hash->registers[0] = hash->registers[3];
-	hash->registers[3] = hash->registers[2];
-	hash->registers[2] = hash->registers[1];
-	hash->registers[1].x32 = tmp;
+	reg[0] = reg[3];
+	reg[3] = reg[2];
+	reg[2] = reg[1];
+	reg[1].x32 = tmp;
 }
 
-void		ft_md5_update(t_hash_use *hash)
+int			ft_md5_update(t_hash_use *hash)
 {
 	int			i;
+	int			j;
+	t_alltypes	reg[4];
 
 	i = 0;
+	j = -1;
+	while (++j < 4)
+		reg[j] = hash->registers[j];
 	while (i < 64)
 	{
-		ft_md5_fct(g_hash_cst[i], hash);
+		ft_md5_fct(g_hash_cst[i], reg, (t_blockx32 *)hash->block);
 		i++;
 	}
+	j = -1;
+	while (++j < 4)
+		hash->registers[j].x32 += reg[j].x32;
+	return (1);
 }
 
 void		ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use,

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/04 14:29:11 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/07 11:41:40 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,15 +40,15 @@ void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
 	else if (flag & H_R)
 	{
 		ft_ssl_print_sum(h_cmd, h_use);
-		ft_printf(flag & H_S ? " \"%s\"\n" : " %s\n", h_use->arg);
+		ft_printf(flag & H_S ? " \"%s\"" : " %s", h_use->arg);
 	}
 	else
 	{
 		ft_printf(flag & H_S ? "%s (\"%s\") = " : "%s (%s) = ",
 				h_cmd.to_print, h_use->arg);
 		ft_ssl_print_sum(h_cmd, h_use);
-		ft_printf("\n");
 	}
+	ft_printf("\n");
 }
 
 unsigned		rot_32(unsigned word, short rot)

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/04 08:50:33 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/07 10:19:15 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@ typedef struct	s_hash_cmd
 	char		*cmd;
 	char		*to_print;
 	t_handler	init;
-	t_handler	update;
+	int			(*update)();
 	t_handler	close;
 	char		flag_list[4][3];
 	unsigned	len_block;
@@ -64,6 +64,12 @@ typedef struct	s_hash_cst
 
 }				t_hash_cst;
 
+typedef union	s_blockx32
+{
+	unsigned		i;
+	unsigned char	c[4];
+}				t_blockx32;
+
 t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION];
 
 /*
@@ -85,7 +91,7 @@ unsigned		rot_32(unsigned f, short g);
 */
 
 void			ft_md5_init(t_hash_cmd cmd, t_hash_use *hash);
-void			ft_md5_update(t_hash_use *h_use);
+int				ft_md5_update(t_hash_use *h_use);
 void			ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done);
 

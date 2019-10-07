@@ -1,3 +1,5 @@
+*.txt
+ss_test/*
 *.o
 *.swp
 __*
