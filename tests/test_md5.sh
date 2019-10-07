@@ -58,6 +58,11 @@ test_md5 'reverse string 1' '-r -s "top"'
 test_md5 'reverse string 2' '-r -s "How is that a reverse thing"' 
 test_md5 'reverse string 3' '-r -s "Maybe a longer input is bad ?"' 
 
+
+test_md5 'long string 0' '-s "dailleurs clcreuso je suis dsol mais mes entrainjjjjjjjjjjj"' 
+test_md5 'long string 1' '-s "dailleurs clcjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhgfjhgfjreuso je suis dsol mais mes entrainjjjjjjjjjjj"' 
+test_md5 'long string 2' '-s "dailleurs clcreuso je suis dsol mais mes entrainjdssssssssssssssssssssssssssssgfdshhhhhhhhhhhhhhhgfddddddddddddddddddddddddddjjjjjjjjjjjjjjjhgddjhfgjjjjjjjjjj"' 
+
 test_md5 'stdin 0' '-p' 'echo ' 'Bonjour'
 test_md5 'stdin 1' '-p' 'echo ' 'Bonjour les amis'
 test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
