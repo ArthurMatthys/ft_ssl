@@ -6,14 +6,14 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 15:41:54 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 16:52:22 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../../includes/ft_ssl_hash.h"
 
-t_hash_cst	g_hash_cst[64] = {
+t_hash_cst	g_hash_md5[64] = {
 	{&f0, 0xd76aa478, 7, 0},
 	{&f0, 0xe8c7b756, 12, 1},
 	{&f0, 0x242070db, 17, 2},
@@ -114,7 +114,7 @@ int			ft_md5_update(t_hash_use *hash)
 		reg[j] = hash->registers[j];
 	while (i < 64)
 	{
-		ft_md5_fct(g_hash_cst[i], reg, (t_blockx32 *)hash->block);
+		ft_md5_fct(g_hash_md5[i], reg, (t_blockx32 *)hash->block);
 		i++;
 	}
 	j = -1;

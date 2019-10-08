@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 12:03:59 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 16:40:54 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,5 +99,25 @@ uint32_t		f0(t_alltypes *abcd);
 uint32_t		f1(t_alltypes *abcd);
 uint32_t		f2(t_alltypes *abcd);
 uint32_t		f3(t_alltypes *abcd);
+
+/*
+** sha256
+*/
+
+void			ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash);
+int				ft_sha256_update(t_hash_use *h_use);
+void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
+		int flag, int h_done);
+
+/*
+** sha512
+*/
+
+void			ft_sha512_init(t_hash_cmd cmd, t_hash_use *hash);
+int				ft_sha512_update(t_hash_use *h_use);
+void			ft_sha512_close(t_hash_cmd h_cmd, t_hash_use *h_use,
+		int flag, int h_done);
+
+
 
 #endif
