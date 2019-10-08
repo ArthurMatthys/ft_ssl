@@ -40,7 +40,6 @@ test_md5 ()
 
 test_md5 'empty string 0' '-s ""'
 test_md5 'empty input 0' '' 'echo ' ''
-test_md5 'empty input 0' '' 'echo -n' ''
 
 test_md5 'simple string 0' '-s "easy"'
 test_md5 'simple string 1' '-s "This test contain 48 bytes so I made it biggerr"' 

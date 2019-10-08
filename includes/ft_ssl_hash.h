@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/07 10:19:15 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 12:03:59 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 
 # include "ft_ssl.h"
 
-# define NB_HASH_FUNCTION 2
+# define NB_HASH_FUNCTION 7
 # define NB_FLAG_HASH 4
 
 # define H_S (1 << 0)
@@ -84,7 +84,7 @@ void			ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag,
 void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash,
 		int flag);
 void			print_block(t_hash_cmd h_cmd, t_hash_use *h_use);
-unsigned		rot_32(unsigned f, short g);
+unsigned		leftrot_32(unsigned f, short g);
 
 /*
 ** MD5

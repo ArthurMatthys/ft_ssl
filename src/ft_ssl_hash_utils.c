@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 11:00:49 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 11:43:54 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
 	ft_printf("\n");
 }
 
-unsigned		rot_32(unsigned word, short rot)
+unsigned		leftrot_32(unsigned word, short rot)
 {
 	return ((word << rot) | (word >> (32 - rot)));
 }
