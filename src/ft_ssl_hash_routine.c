@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/07 15:46:30 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 10:50:42 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -69,27 +69,36 @@ static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 {
 	int		fd;
 	int		padding_done;
+	unsigned	index;
 	size_t	size;
 
 	padding_done = 0;
+	index = 0;
 	fd = str ? open_arg(str) : 0;
 	size = 0;
 	if (fd < 0)
 		return (error_open(str, h_cmd.cmd, fd));
-	while ((size = read_fd(h_use->block, fd, h_cmd.len_block)) > 0 ||
-			!padding_done)
+	while ((size = read(fd, ((char *)h_use->block) + index, h_cmd.len_block - index)) > 0)
 	{
-		ft_printf("yo\n");
+		index += size;
 		if (flag & H_P)
-			write(1, h_use->block, size);
+			write(1, ((char *)h_use->block) + index - size, size);
 		h_use->len_msg.x64 += size;
-		if (size < h_cmd.len_block && (padding_done = 1))
-			h_use->block->c[size] = 0x80;
-		print_block(h_cmd, h_use);
+		if (index == h_cmd.len_block)
+		{
+			h_cmd.update(h_use);
+			print_block(h_cmd, h_use);
+			ft_bzero(h_use->block, h_cmd.len_block);
+			index = 0;
+		}
+	}
+	h_use->block->c[index++] = 0x80;
+	if (index > h_cmd.len_block - h_cmd.size_len)
+	{
 		h_cmd.update(h_use);
+		ft_bzero(h_use->block, h_cmd.len_block);
 	}
 	add_len(h_use, h_cmd);
-	print_block(h_cmd, h_use);
 	h_cmd.update(h_use);
 	return (1);
 }
