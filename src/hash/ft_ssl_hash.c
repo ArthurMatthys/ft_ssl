@@ -6,13 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/04 11:37:32 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/08 15:41:17 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/ft_ssl.h"
-#include "../includes/ft_ssl_hash.h"
+#include "../../includes/ft_ssl_hash.h"
 
 t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION] =
 {
