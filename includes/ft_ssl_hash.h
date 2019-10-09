@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:54:17 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:23:40 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,15 @@
 # define C_STDIN 1
 # define C_FILE 2
 # define C_STRING 3
+
+# define REG_A 0
+# define REG_B 1
+# define REG_C 2
+# define REG_D 3
+# define REG_E 4
+# define REG_F 5
+# define REG_G 6
+# define REG_H 7
 
 typedef struct	s_hash_cmd
 {
@@ -81,7 +90,7 @@ void			hash_destroy(t_hash_use *hash);
 void			ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag,
 		int whcase, char *arg);
 void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash,
-		int flag);
+		int flag, unsigned nb_reg);
 void			print_block(t_hash_cmd h_cmd, t_hash_use *h_use);
 
 
@@ -126,6 +135,9 @@ unsigned 	s0_32(unsigned *words, int index);
 unsigned 	s1_32(unsigned *words, int index);
 unsigned 	S0_32(unsigned reg);
 unsigned 	S1_32(unsigned reg);
+unsigned	ch_32(unsigned reg_e, unsigned reg_f, unsigned reg_g);
+unsigned	maj_32(unsigned reg_a, unsigned reg_b, unsigned reg_c);
+void		rot_registers_32(unsigned *reg, unsigned tmp1, unsigned tmp2);
 
 
 /*

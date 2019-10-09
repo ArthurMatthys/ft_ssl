@@ -6,21 +6,22 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 14:33:12 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 14:33:33 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:26:12 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_hash.h"
 
-static void		ft_ssl_print_sum(t_hash_cmd h_cmd, t_hash_use *h_use)
+static void		ft_ssl_print_sum(unsigned nb_reg, t_hash_use *h_use,
+		t_hash_cmd h_cmd)
 {
 	unsigned	i;
 	unsigned	j;
 	t_alltypes	sum;
 
 	i = 0;
-	while (i < h_cmd.nb_register)
+	while (i < nb_reg)
 	{
 		j = 0;
 		sum = h_use->registers[i];
@@ -33,20 +34,21 @@ static void		ft_ssl_print_sum(t_hash_cmd h_cmd, t_hash_use *h_use)
 	}
 }
 
-void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use, int flag)
+void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *h_use,
+		int flag, unsigned nb_reg)
 {
 	if (flag & H_P || flag & H_Q || !h_use->arg)
-		ft_ssl_print_sum(h_cmd, h_use);
+		ft_ssl_print_sum(nb_reg, h_use, h_cmd);
 	else if (flag & H_R)
 	{
-		ft_ssl_print_sum(h_cmd, h_use);
+		ft_ssl_print_sum(nb_reg, h_use, h_cmd);
 		ft_printf(flag & H_S ? " \"%s\"" : " %s", h_use->arg);
 	}
 	else
 	{
 		ft_printf(flag & H_S ? "%s (\"%s\") = " : "%s (%s) = ",
 				h_cmd.to_print, h_use->arg);
-		ft_ssl_print_sum(h_cmd, h_use);
+		ft_ssl_print_sum(nb_reg, h_use, h_cmd);
 	}
 	ft_printf("\n");
 }

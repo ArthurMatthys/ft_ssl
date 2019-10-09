@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:53:27 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:23:58 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -105,18 +105,15 @@ static void	ft_md5_fct(t_hash_cst cst, t_alltypes *reg, t_blockx32 *block)
 int			ft_md5_update(t_hash_use *hash)
 {
 	int			i;
-	int			j;
 	t_alltypes	reg[4];
 
 	i = 0;
-	j = -1;
 	ft_ssl_load_registers(reg, hash->registers, 4);
 	while (i < 64)
 	{
 		ft_md5_fct(g_hash_md5[i], reg, (t_blockx32 *)hash->block);
 		i++;
 	}
-	j = -1;
 	ft_ssl_add_registers(hash->registers, reg, 4);
 	return (1);
 }
@@ -125,6 +122,6 @@ void		ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done)
 {
 	if (h_done)
-		ft_ssl_print_hash(h_cmd, h_use, flag);
+		ft_ssl_print_hash(h_cmd, h_use, flag, 4);
 	hash_destroy(h_use);
 }

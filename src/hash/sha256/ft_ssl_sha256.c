@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:33:59 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:24:18 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,36 +85,48 @@ unsigned	g_hash_sha256[64] =
 void	ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
 {
 	hash_init(cmd, hash);
-	hash->registers[0].x32 = 0x6a09e667;
-	hash->registers[0].x32 = 0xbb67ae85;
-	hash->registers[0].x32 = 0x3c6ef372;
-	hash->registers[0].x32 = 0xa54ff53a;
-	hash->registers[0].x32 = 0x510e527f;
-	hash->registers[0].x32 = 0x9b05688c;
-	hash->registers[0].x32 = 0x1f83d9ab;
-	hash->registers[0].x32 = 0x5be0cd19;
+	hash->registers[REG_A].x32 = 0x6a09e667;
+	hash->registers[REG_B].x32 = 0xbb67ae85;
+	hash->registers[REG_C].x32 = 0x3c6ef372;
+	hash->registers[REG_D].x32 = 0xa54ff53a;
+	hash->registers[REG_E].x32 = 0x510e527f;
+	hash->registers[REG_F].x32 = 0x9b05688c;
+	hash->registers[REG_G].x32 = 0x1f83d9ab;
+	hash->registers[REG_H].x32 = 0x5be0cd19;
 }
 
-int		ft_sha256_update(t_hash_use *h_use)
+int		ft_sha256_update(t_hash_use *hash)
 {
 	unsigned	block[64];
+	t_alltypes	reg[4];
 	int 		i;
+	unsigned	tmp1;
+	unsigned	tmp2;
 
 	i = 15;
-	ft_memcpy(block, h_use->block, 64);
+	ft_memcpy(block, hash->block, 64);
+	ft_ssl_load_registers(reg, hash->registers, 4);
 	while (++i < 64)
 		block[i] = block[i - 16] + s0_32(block, i)
 			+ block[i - 7] + s1_32(block, i); 
+	i = -1;
+	while (i < 64)
+	{
+        tmp1 = reg[REG_H].x32 + S1_32(reg[REG_E].x32) +
+			ch_32(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32) + 
+			g_hash_sha256[i] + block[i];
+		tmp2 = S0_32(reg[REG_A].x32) + maj_32(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32);
+		rot_registers_32((unsigned *)reg, tmp1, tmp2);
+		i++;
+	}
 
-
-
-
+	ft_ssl_add_registers(hash->registers, reg, 4);
 	return (1);
 }
 
 void	ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use, int flag, int h_done)
 {
 	if (h_done)
-		ft_ssl_print_hash(h_cmd, h_use, flag);
+		ft_ssl_print_hash(h_cmd, h_use, flag, 8);
 	hash_destroy(h_use);
 }
