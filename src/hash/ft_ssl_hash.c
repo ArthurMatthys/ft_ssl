@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:49:07 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 15:57:20 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,8 +19,8 @@ t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION] =
 		{"-s", "-r", "-q", "-p"}, 64, 4, 4, 8},
 	{"sha256", "SHA256", &ft_sha256_init, &ft_sha256_update, &ft_sha256_close, \
 		{"-s", "-r", "-q", "-p"}, 64, 4, 4, 8},
-	{"sha512", "SHA512", &ft_sha512_init, &ft_sha512_update, &ft_sha512_close, \
-		{"-s", "-r", "-q", "-p"}, 128, 4, 8, 16},
+//	{"sha512", "SHA512", &ft_sha512_init, &ft_sha512_update, &ft_sha512_close, \
+//		{"-s", "-r", "-q", "-p"}, 128, 4, 8, 16},
 };
 
 void	hash_init(t_hash_cmd cmd, t_hash_use *hash)

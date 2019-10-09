@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_ssl_hash_utils.c                              .::    .:/ .      .::   */
+/*   ft_ssl_utils_reg.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:07:39 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 15:34:52 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/09 15:43:09 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_hash.h"
 
-
-unsigned		leftrot_32(unsigned word, short rot)
+void	ft_ssl_load_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 {
-	return ((word << rot) | (word >> (32 - rot)));
+	unsigned 	index;
+
+	index = 0;
+	while (index < nbr)
+	{
+		dst[index].x128 = src[index].x128;
+		index++;
+	}
 }
 
-unsigned		rightrot_32(unsigned word, short rot)
+void	ft_ssl_add_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 {
-	return ((word >> rot) | (word << (32 - rot)));
-}
+	unsigned 	index;
 
-unsigned		rightshift_32(unsigned word, short shift)
-{
-	return ((word & 0xFFFFFFFF) >> shift);
+	index = 0;
+	while (index < nbr)
+	{
+		dst[index].x128 += src[index].x128;
+		index++;
+	}
 }
-

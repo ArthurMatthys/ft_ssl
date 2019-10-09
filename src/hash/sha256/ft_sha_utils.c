@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_ssl_hash_utils.c                              .::    .:/ .      .::   */
+/*   ft_sha_utils.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:07:39 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 15:17:42 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/09 15:29:47 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/ft_ssl_hash.h"
+#include "../../../includes/ft_ssl_hash.h"
 
-
-unsigned		leftrot_32(unsigned word, short rot)
+unsigned	ch_32(unsigned reg_e, unsigned reg_f, unsigned reg_g)
 {
-	return ((word << rot) | (word >> (32 - rot)));
+	return ((reg_e & reg_f) ^ (~reg_e & reg_g));
 }
 
-unsigned		rightrot_32(unsigned word, short rot)
+unsigned	maj_32(unsigned reg_a, unsigned reg_b, unsigned reg_c)
 {
-	return ((word >> rot) | (word << (32 - rot)));
+	return ((reg_a & reg_b) ^ (reg_a & reg_c) ^ (reg_b & reg_c));
 }
-
-unsigned		rightshift_32(unsigned word, short shift)
-{
-	return ((word & 0xFFFFFFFF) >> shift);
-}
-

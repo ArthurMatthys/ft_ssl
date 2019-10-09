@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_ssl_hash_utils.c                              .::    .:/ .      .::   */
+/*   ft_memrev.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 15:07:39 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 14:30:02 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/09 14:30:22 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/ft_ssl_hash.h"
+#include "libft.h"
 
-
-unsigned		leftrot_32(unsigned word, short rot)
+void		ft_memrev(t_alltypes *len, int size)
 {
-	return ((word << rot) | (word >> (32 - rot)));
-}
+	int				i;
+	char			tmp;
 
-unsigned		rightrot_32(unsigned word, short rot)
-{
-	return ((word >> rot) | (word << (32 - rot)));
+	i = -1;
+	while (++i < --size)
+	{
+		tmp = len->c[size];
+		len->c[size] = len->c[i];
+		len->c[i] = tmp;
+	}
 }
-
-unsigned		rightshift_32(unsigned word, short shift)
-{
-	return ((word & 0xFFFFFFFF) >> shift);
-}
-

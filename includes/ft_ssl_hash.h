@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:40:54 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 15:54:17 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,6 @@ typedef struct	s_hash_cmd
 	t_handler	close;
 	char		flag_list[4][3];
 	unsigned	len_block;
-	unsigned	len_output;
 	unsigned	nb_register;
 	unsigned	size_register;
 	unsigned	size_len;
@@ -84,7 +83,16 @@ void			ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag,
 void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash,
 		int flag);
 void			print_block(t_hash_cmd h_cmd, t_hash_use *h_use);
+
+
 unsigned		leftrot_32(unsigned f, short g);
+unsigned		rightrot_32(unsigned f, short g);
+unsigned		rightshift_32(unsigned f, short g);
+void			ft_ssl_load_registers(t_alltypes *dst,
+		t_alltypes *src, unsigned nbr);
+void			ft_ssl_add_registers(t_alltypes *dst,
+		t_alltypes *src, unsigned nbr);
+
 
 /*
 ** MD5
@@ -108,6 +116,17 @@ void			ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash);
 int				ft_sha256_update(t_hash_use *h_use);
 void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done);
+
+
+/*
+** sha 64 bytes
+*/
+
+unsigned 	s0_32(unsigned *words, int index);
+unsigned 	s1_32(unsigned *words, int index);
+unsigned 	S0_32(unsigned reg);
+unsigned 	S1_32(unsigned reg);
+
 
 /*
 ** sha512

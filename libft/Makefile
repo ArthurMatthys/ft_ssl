@@ -45,7 +45,8 @@ SRC = ft_addmatrix.c ft_atoi.c ft_bzero.c ft_commatrix.c \
 		get_next_line_freaddon.c is_in.c\
 		divide.c ft_printf.c ft_printf_conv.c ft_putwchar.c \
 		ft_uatoi_base.c ft_atoi_base.c ft_printf_ch.c ft_printf_dd.c \
-		ft_putstr_def.c ft_putwstr_def.c parse.c ft_strchr.c minmax.c
+		ft_putstr_def.c ft_putwstr_def.c parse.c ft_strchr.c minmax.c \
+		ft_memrev.c
 
 
 C_FILES = $(addprefix $(SRCDIR), $(SRC))

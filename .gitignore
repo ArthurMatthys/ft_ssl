@@ -4,3 +4,4 @@ ss_test/*
 *.swp
 __*
 *.dSYM
+tags

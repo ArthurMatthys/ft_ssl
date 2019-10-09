@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:52:22 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 15:53:27 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,16 +110,14 @@ int			ft_md5_update(t_hash_use *hash)
 
 	i = 0;
 	j = -1;
-	while (++j < 4)
-		reg[j] = hash->registers[j];
+	ft_ssl_load_registers(reg, hash->registers, 4);
 	while (i < 64)
 	{
 		ft_md5_fct(g_hash_md5[i], reg, (t_blockx32 *)hash->block);
 		i++;
 	}
 	j = -1;
-	while (++j < 4)
-		hash->registers[j].x32 += reg[j].x32;
+	ft_ssl_add_registers(hash->registers, reg, 4);
 	return (1);
 }
 

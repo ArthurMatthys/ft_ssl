@@ -6,20 +6,21 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/08 16:59:20 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 15:33:59 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../../includes/ft_ssl_hash.h"
 
-unsigned	g_hash_sha256[64] = {
+unsigned	g_hash_sha256[64] = 
+{
    0x428a2f98,
    0x71374491,
    0xb5c0fbcf,
    0xe9b5dba5,
    0x3956c25b,
-   0x59f111f1, 
+   0x59f111f1,
    0x923f82a4,
    0xab1c5ed5,
    0xd807aa98,
@@ -27,7 +28,7 @@ unsigned	g_hash_sha256[64] = {
    0x243185be,
    0x550c7dc3,
    0x72be5d74,
-   0x80deb1fe, 
+   0x80deb1fe,
    0x9bdc06a7,
    0xc19bf174,
    0xe49b69c1,
@@ -35,7 +36,7 @@ unsigned	g_hash_sha256[64] = {
    0x0fc19dc6,
    0x240ca1cc,
    0x2de92c6f,
-   0x4a7484aa, 
+   0x4a7484aa,
    0x5cb0a9dc,
    0x76f988da,
    0x983e5152,
@@ -43,7 +44,7 @@ unsigned	g_hash_sha256[64] = {
    0xb00327c8,
    0xbf597fc7,
    0xc6e00bf3,
-   0xd5a79147, 
+   0xd5a79147,
    0x06ca6351,
    0x14292967,
    0x27b70a85,
@@ -51,7 +52,7 @@ unsigned	g_hash_sha256[64] = {
    0x4d2c6dfc,
    0x53380d13,
    0x650a7354,
-   0x766a0abb, 
+   0x766a0abb,
    0x81c2c92e,
    0x92722c85,
    0xa2bfe8a1,
@@ -59,7 +60,7 @@ unsigned	g_hash_sha256[64] = {
    0xc24b8b70,
    0xc76c51a3,
    0xd192e819,
-   0xd6990624, 
+   0xd6990624,
    0xf40e3585,
    0x106aa070,
    0x19a4c116,
@@ -67,7 +68,7 @@ unsigned	g_hash_sha256[64] = {
    0x2748774c,
    0x34b0bcb5,
    0x391c0cb3,
-   0x4ed8aa4a, 
+   0x4ed8aa4a,
    0x5b9cca4f,
    0x682e6ff3,
    0x748f82ee,
@@ -75,7 +76,45 @@ unsigned	g_hash_sha256[64] = {
    0x84c87814,
    0x8cc70208,
    0x90befffa,
-   0xa4506ceb, 
+   0xa4506ceb,
    0xbef9a3f7,
    0xc67178f2
 };
+
+
+void	ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
+{
+	hash_init(cmd, hash);
+	hash->registers[0].x32 = 0x6a09e667;
+	hash->registers[0].x32 = 0xbb67ae85;
+	hash->registers[0].x32 = 0x3c6ef372;
+	hash->registers[0].x32 = 0xa54ff53a;
+	hash->registers[0].x32 = 0x510e527f;
+	hash->registers[0].x32 = 0x9b05688c;
+	hash->registers[0].x32 = 0x1f83d9ab;
+	hash->registers[0].x32 = 0x5be0cd19;
+}
+
+int		ft_sha256_update(t_hash_use *h_use)
+{
+	unsigned	block[64];
+	int 		i;
+
+	i = 15;
+	ft_memcpy(block, h_use->block, 64);
+	while (++i < 64)
+		block[i] = block[i - 16] + s0_32(block, i)
+			+ block[i - 7] + s1_32(block, i); 
+
+
+
+
+	return (1);
+}
+
+void	ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use, int flag, int h_done)
+{
+	if (h_done)
+		ft_ssl_print_hash(h_cmd, h_use, flag);
+	hash_destroy(h_use);
+}
