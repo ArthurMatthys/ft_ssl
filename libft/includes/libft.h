@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/03 12:02:28 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 15:53:56 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -105,6 +105,7 @@ char				*ft_strrev(char *str);
 char				**ft_strsplit(char const *s, char c);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				*ft_memrev(void *ptr, int size);
 
 int					ft_pow_int(int c, size_t n);
 size_t				ft_countwords(char const *s, char c);

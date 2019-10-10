@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:32:19 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 17:38:04 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -101,11 +101,13 @@ int		ft_sha256_update(t_hash_use *hash)
 	t_alltypes	reg[8];
 	unsigned 		i;
 	unsigned	tmp[2];
+	unsigned	*cpy;
 
+	cpy = (unsigned *)hash->block;
+	for (int k = 0; k < 16; k++)
+		cpy[k] = *((unsigned *)ft_memrev(&(cpy[k]), 4));
 	i = 15;
-	ft_memcpy(block, hash->block, 64);
-	//for (int k = 0; k < 16; k++)
-	//	block[k] = ((unsigned *)hash->block)[k];
+	ft_memcpy(block, cpy, 64);
 	while (++i < 64)
 		block[i] = block[i - 16] + smas0(block[i - 15])
 			+ block[i - 7] + smas1(block[i - 2]); 
