@@ -6,14 +6,14 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 17:24:18 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 14:32:19 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../../includes/ft_ssl_hash.h"
 
-unsigned	g_hash_sha256[64] = 
+unsigned	g_sha256_k[64] = 
 {
    0x428a2f98,
    0x71374491,
@@ -98,29 +98,32 @@ void	ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
 int		ft_sha256_update(t_hash_use *hash)
 {
 	unsigned	block[64];
-	t_alltypes	reg[4];
-	int 		i;
-	unsigned	tmp1;
-	unsigned	tmp2;
+	t_alltypes	reg[8];
+	unsigned 		i;
+	unsigned	tmp[2];
 
 	i = 15;
 	ft_memcpy(block, hash->block, 64);
-	ft_ssl_load_registers(reg, hash->registers, 4);
+	//for (int k = 0; k < 16; k++)
+	//	block[k] = ((unsigned *)hash->block)[k];
 	while (++i < 64)
-		block[i] = block[i - 16] + s0_32(block, i)
-			+ block[i - 7] + s1_32(block, i); 
+		block[i] = block[i - 16] + smas0(block[i - 15])
+			+ block[i - 7] + smas1(block[i - 2]); 
+	ft_ssl_load_registers(reg, hash->registers, 8);
 	i = -1;
-	while (i < 64)
+	while (++i < 64)
 	{
-        tmp1 = reg[REG_H].x32 + S1_32(reg[REG_E].x32) +
-			ch_32(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32) + 
-			g_hash_sha256[i] + block[i];
-		tmp2 = S0_32(reg[REG_A].x32) + maj_32(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32);
-		rot_registers_32((unsigned *)reg, tmp1, tmp2);
-		i++;
+        tmp[0] = reg[REG_H].x32 + bigs1(reg[REG_E].x32) +
+			ch(reg[REG_E].x32, reg[REG_F].x32, reg[REG_G].x32) + 
+			g_sha256_k[i] + block[i];
+		tmp[1] = bigs0(reg[REG_A].x32) +
+			maj(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32);
+		rot_registers_sha(reg, tmp);
 	}
-
-	ft_ssl_add_registers(hash->registers, reg, 4);
+	ft_ssl_add_registers(hash->registers, reg, 8);
+	//for (int k = 0; k < 8; k++)
+	//	ft_printf("%x", hash->registers[k].x32);
+	//ft_printf("\n");
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 17:23:40 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 14:31:34 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -131,13 +131,13 @@ void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 ** sha 64 bytes
 */
 
-unsigned 	s0_32(unsigned *words, int index);
-unsigned 	s1_32(unsigned *words, int index);
-unsigned 	S0_32(unsigned reg);
-unsigned 	S1_32(unsigned reg);
-unsigned	ch_32(unsigned reg_e, unsigned reg_f, unsigned reg_g);
-unsigned	maj_32(unsigned reg_a, unsigned reg_b, unsigned reg_c);
-void		rot_registers_32(unsigned *reg, unsigned tmp1, unsigned tmp2);
+unsigned 	smas0(unsigned word);
+unsigned 	smas1(unsigned word);
+unsigned 	bigs0(unsigned reg);
+unsigned 	bigs1(unsigned reg);
+unsigned	ch(unsigned reg_e, unsigned reg_f, unsigned reg_g);
+unsigned	maj(unsigned reg_a, unsigned reg_b, unsigned reg_c);
+void		rot_registers_sha(t_alltypes *reg, unsigned *tmp);
 
 
 /*

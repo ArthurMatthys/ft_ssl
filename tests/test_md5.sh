@@ -62,13 +62,14 @@ test_md5 'long string 0' '-s "dailleurs clcreuso je suis dsol mais mes entrainjj
 test_md5 'long string 1' '-s "dailleurs clcjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhgfjhgfjreuso je suis dsol mais mes entrainjjjjjjjjjjj"' 
 test_md5 'long string 2' '-s "dailleurs clcreuso je suis dsol mais mes entrainjdssssssssssssssssssssssssssssgfdshhhhhhhhhhhhhhhgfddddddddddddddddddddddddddjjjjjjjjjjjjjjjhgddjhfgjjjjjjjjjj"' 
 
-test_md5 'stdin 0' '-p' 'echo ' 'Bonjour'
+test_md5 'stdin 0' '-p -p -p' 'echo ' 'Bonjour'
 test_md5 'stdin 1' '-p' 'echo ' 'Bonjour les amis'
 test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
 test_md5 'stdins 0' '-p -p' 'echo ' 'Bonjourhtkreklhfgd'
 
 test_md5 'no flag 0' 'auteur' 
 test_md5 'no flag 1' 'Makefile' 
+test_md5 'no flag 2' 'ft_ssl' 
 
 test_md5 'files 0' '-p' 'cat ' 'auteur'
 test_md5 'files 1' '-p' 'cat ' 'src/ft_ssl.c'
@@ -85,6 +86,7 @@ test_md5 'multiple string 2' '-s Hello -s "This test contain 48 bytes so I made 
 test_md5 'multiple string 3' '-s I -s Dont -s know -s what -s I -s should -s -test' 
 
 test_md5 'reverse then quite string 0' '-r -s "Maybe a longer input is bad ?" -q -s "oupsi"' 
+
 test_md5 'string then quite string 0' '-s "Maybe a longer input is bad ?" -q -s "oupsi"' 
 
 exit ${RES}
