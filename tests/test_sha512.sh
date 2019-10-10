@@ -47,3 +47,4 @@ test_sha512 'file 0' '' 'cat ' 'auteur'
 test_sha512 'file 1' '' 'cat ' 'Makefile'
 test_sha512 'file 2' '' 'cat ' 'ft_ssl'
 
+exit ${RES}

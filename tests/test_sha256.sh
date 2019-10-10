@@ -47,3 +47,4 @@ test_sha256 'file 0' '' 'cat ' 'auteur'
 test_sha256 'file 1' '' 'cat ' 'Makefile'
 test_sha256 'file 2' '' 'cat ' 'ft_ssl'
 
+exit ${RES}
