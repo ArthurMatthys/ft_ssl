@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 17:38:04 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 10:43:30 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,10 +104,14 @@ int		ft_sha256_update(t_hash_use *hash)
 	unsigned	*cpy;
 
 	cpy = (unsigned *)hash->block;
-	for (int k = 0; k < 16; k++)
-		cpy[k] = *((unsigned *)ft_memrev(&(cpy[k]), 4));
+	i = -1;
+	while (++i < 16)
+		block[i] = *((unsigned *)ft_memrev(&(cpy[i]), 4));
+	//for (int k = 0; k < 16; k++)
+	//	block[k] = *((unsigned *)ft_memrev(&(cpy[k]), 4));
 	i = 15;
-	ft_memcpy(block, cpy, 64);
+//	for (int k = 0; k < 16; k++)
+//		ft_printf("%.4x", block[k]);
 	while (++i < 64)
 		block[i] = block[i - 16] + smas0(block[i - 15])
 			+ block[i - 7] + smas1(block[i - 2]); 
@@ -123,9 +127,6 @@ int		ft_sha256_update(t_hash_use *hash)
 		rot_registers_sha(reg, tmp);
 	}
 	ft_ssl_add_registers(hash->registers, reg, 8);
-	//for (int k = 0; k < 8; k++)
-	//	ft_printf("%x", hash->registers[k].x32);
-	//ft_printf("\n");
 	return (1);
 }
 

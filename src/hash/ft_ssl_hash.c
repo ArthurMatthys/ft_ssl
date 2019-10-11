@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 09:32:50 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 10:27:28 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,19 +16,19 @@
 t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION] =
 {
 	{"md5", "MD5", &ft_md5_init, &ft_md5_update, 
-		&ft_md5_close, {"-s", "-r", "-q", "-p"}, 64, 4, 4, 8},
+		&ft_md5_close, {"-s", "-r", "-q", "-p"}, 64, 4, 4, 8, 0},
 	{"sha224", "SHA224", &ft_sha256_init, &ft_sha256_update, 
-		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8},
+		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8, 1},
 	{"sha256", "SHA256", &ft_sha256_init, &ft_sha256_update, 
-		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8},
+		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8, 1},
 	{"sha384", "SHA284", &ft_sha256_init, &ft_sha256_update, 
-		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8},
+		&ft_sha256_close, {"-s", "-r", "-q", "-p"}, 64, 8, 4, 8, 1},
 	{"sha512", "SHA512", &ft_sha512_init, &ft_sha512_update, 
-		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16},
+		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
 	{"sha512/224", "SHA512/225", &ft_sha512_init, &ft_sha512_update, 
-		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16},
+		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
 	{"sha512/256", "SHA512/256", &ft_sha512_init, &ft_sha512_update,
-		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16},
+		&ft_sha512_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
 };
 
 void	hash_init(t_hash_cmd cmd, t_hash_use *hash)

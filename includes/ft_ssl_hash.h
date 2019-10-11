@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:31:34 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 10:27:03 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,6 +51,7 @@ typedef struct	s_hash_cmd
 	unsigned	nb_register;
 	unsigned	size_register;
 	unsigned	size_len;
+	unsigned	endian;
 }				t_hash_cmd;
 
 typedef struct	s_hash_use

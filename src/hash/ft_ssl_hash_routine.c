@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 11:33:56 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 10:33:41 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,20 +15,24 @@
 
 static void	add_len(t_hash_use *h_use, t_hash_cmd h_cmd)
 {
-	int		i;
+	int			i;
+	t_alltypes	cpy;
 
 	i = 0;
+	cpy = h_use->len_msg;
 	if (h_cmd.size_len == 16)
 	{
-		h_use->len_msg.x64 *= 8;
-		((char *)(h_use->block))[h_cmd.len_block - 16] = h_use->len_msg.x128;
+		cpy.x64 *= 8;
+		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 16)) : cpy;	
+		((char *)(h_use->block))[h_cmd.len_block - 16] = cpy.x128;
 	}
 	else if (h_cmd.size_len == 8)
 	{
-		h_use->len_msg.x64 *= 8;
+		cpy.x64 *= 8;
+		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 8)) : cpy;	
 		while (i < 8)
 		{
-			((char *)(h_use->block))[h_cmd.len_block - 8 + i] = h_use->len_msg.c[i];
+			((char *)(h_use->block))[h_cmd.len_block - 8 + i] = cpy.c[i];
 			i++;
 		}
 
