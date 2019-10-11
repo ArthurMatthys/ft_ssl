@@ -49,31 +49,40 @@ SRC = ft_ssl.c \
 
 O_FILES = $(SRC:%.c=$(OBJDIR)%.o)
 
+NAME_UP = FT_SSL
 
 # **************************************************************************** #
 #                                    RULES                                     #
 # **************************************************************************** #
 
-all: $(NAME)
+all: lib $(NAME) 
 
-$(NAME): $(OBJDIR) $(O_FILES) $(LFTDIR)libft.a
-	$(CC) $(CFLAGS) -o $(NAME) $(O_FILES) -L$(LFTDIR) -lft $(INCLUDE)
+$(NAME): $(OBJDIR) $(O_FILES)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mLinking...\033[0m"
+	@$(CC) $(CFLAGS) -o $(NAME) $(O_FILES) -L$(LFTDIR) -lft $(INCLUDE)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mDone!\033[0m\n"
 
-$(LFTDIR)libft.a:
-	make -C $(LFTDIR)
+lib:
+	@make -C $(LFTDIR)
 
 $(OBJDIR):
-	mkdir $@
+	@mkdir $@
 
 $(OBJDIR)%.o: %.c $(H_FILE)
-	$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mBuilding $<\033[0m"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE)
 
 clean:
-	rm -rf $(OBJDIR)
-	make -C $(LFTDIR) clean
+	@printf "[$(NAME_UP)] \033[1;31mCleaned .o!\033[0m\n"
+	@rm -rf $(OBJDIR)
+	@make -C $(LFTDIR) clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LFTDIR) fclean
+	@printf "[$(NAME_UP)] \033[1;31mCleaned .a!\033[0m\n"
+	@rm -f $(NAME)
+	@make -C $(LFTDIR) fclean
+
+test :
+	./test_ssl.sh
 
 re: fclean all

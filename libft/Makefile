@@ -12,6 +12,8 @@
 
 .PHONY: clean fclean all re
 
+vpath %.c src
+
 NAME = libft.a
 
 CC = gcc
@@ -49,26 +51,31 @@ SRC = ft_addmatrix.c ft_atoi.c ft_bzero.c ft_commatrix.c \
 		ft_memrev.c
 
 
-C_FILES = $(addprefix $(SRCDIR), $(SRC))
-O_FILES = $(patsubst $(SRCDIR)%.c, $(OBJDIR)%.o, $(C_FILES))
+O_FILES = $(SRC:%.c=$(OBJDIR)%.o)
 
+NAME_UP = LIBFT
 
 all : $(NAME)
 
 $(NAME) : $(OBJDIR) $(O_FILES)
-		ar rcs $(NAME) $(O_FILES)
-		ranlib $(NAME)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mLinking...\033[0m"
+	@ar rcs $(NAME) $(O_FILES)
+	@ranlib $(NAME)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mDone!\033[0m\n"
 
 $(OBJDIR):
-	mkdir $@
+	@mkdir $@
 
-$(OBJDIR)%.o: $(SRCDIR)%.c $(H_FILE)
-		$(CC) $(CFLAGS) -o $@ -c $<
+$(OBJDIR)%.o: %.c $(H_FILE)
+	@printf "\r\033[K[$(NAME_UP)] \033[1;32mBuilding $<\033[0m"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE)
 
 clean:
-		rm -rf $(O_FILES)
+	@printf "[$(NAME_UP)] \033[1;31mCleaned .o!\033[0m\n"
+	@rm -rf $(O_FILES)
 
 fclean: clean
-		rm -rf $(NAME)
+	@printf "[$(NAME_UP)] \033[1;31mCleaned .a!\033[0m\n"
+	@rm -f $(NAME)
 
 re : fclean all

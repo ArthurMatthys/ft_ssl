@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 10:27:03 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 10:52:14 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,7 +73,7 @@ typedef struct	s_hash_cst
 
 }				t_hash_cst;
 
-typedef union	s_blockx32
+typedef union	u_blockx32
 {
 	unsigned		i;
 	unsigned char	c[4];
@@ -94,7 +94,6 @@ void			ft_ssl_print_hash(t_hash_cmd h_cmd, t_hash_use *hash,
 		int flag, unsigned nb_reg);
 void			print_block(t_hash_cmd h_cmd, t_hash_use *h_use);
 
-
 unsigned		leftrot_32(unsigned f, short g);
 unsigned		rightrot_32(unsigned f, short g);
 unsigned		rightshift_32(unsigned f, short g);
@@ -102,7 +101,6 @@ void			ft_ssl_load_registers(t_alltypes *dst,
 		t_alltypes *src, unsigned nbr);
 void			ft_ssl_add_registers(t_alltypes *dst,
 		t_alltypes *src, unsigned nbr);
-
 
 /*
 ** MD5
@@ -127,19 +125,17 @@ int				ft_sha256_update(t_hash_use *h_use);
 void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done);
 
-
 /*
 ** sha 64 bytes
 */
 
-unsigned 	smas0(unsigned word);
-unsigned 	smas1(unsigned word);
-unsigned 	bigs0(unsigned reg);
-unsigned 	bigs1(unsigned reg);
-unsigned	ch(unsigned reg_e, unsigned reg_f, unsigned reg_g);
-unsigned	maj(unsigned reg_a, unsigned reg_b, unsigned reg_c);
-void		rot_registers_sha(t_alltypes *reg, unsigned *tmp);
-
+unsigned		smas0(unsigned word);
+unsigned		smas1(unsigned word);
+unsigned		bigs0(unsigned reg);
+unsigned		bigs1(unsigned reg);
+unsigned		ch(unsigned reg_e, unsigned reg_f, unsigned reg_g);
+unsigned		maj(unsigned reg_a, unsigned reg_b, unsigned reg_c);
+void			rot_registers_sha(t_alltypes *reg, unsigned *tmp);
 
 /*
 ** sha512
@@ -149,7 +145,5 @@ void			ft_sha512_init(t_hash_cmd cmd, t_hash_use *hash);
 int				ft_sha512_update(t_hash_use *h_use);
 void			ft_sha512_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done);
-
-
 
 #endif

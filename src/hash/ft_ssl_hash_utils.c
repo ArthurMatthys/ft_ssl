@@ -6,13 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 10:00:21 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 13:04:36 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_hash.h"
-
 
 unsigned		leftrot_32(unsigned word, short rot)
 {
@@ -28,4 +27,3 @@ unsigned		rightshift_32(unsigned word, short shift)
 {
 	return ((word & 0xFFFFFFFF) >> shift);
 }
-

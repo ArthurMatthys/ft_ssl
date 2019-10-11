@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 10:33:41 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 13:13:00 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,19 +23,18 @@ static void	add_len(t_hash_use *h_use, t_hash_cmd h_cmd)
 	if (h_cmd.size_len == 16)
 	{
 		cpy.x64 *= 8;
-		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 16)) : cpy;	
+		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 16)) : cpy;
 		((char *)(h_use->block))[h_cmd.len_block - 16] = cpy.x128;
 	}
 	else if (h_cmd.size_len == 8)
 	{
 		cpy.x64 *= 8;
-		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 8)) : cpy;	
+		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 8)) : cpy;
 		while (i < 8)
 		{
 			((char *)(h_use->block))[h_cmd.len_block - 8 + i] = cpy.c[i];
 			i++;
 		}
-
 	}
 }
 
@@ -71,10 +70,10 @@ static int	du_hash(t_hash_use *h_use, t_hash_cmd h_cmd)
 
 static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 {
-	int		fd;
-	int		padding_done;
+	int			fd;
+	int			padding_done;
 	unsigned	index;
-	size_t	size;
+	size_t		size;
 
 	padding_done = 0;
 	index = 0;
@@ -82,7 +81,8 @@ static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 	size = 0;
 	if (fd < 0)
 		return (error_open(str, h_cmd.cmd, fd));
-	while ((!(flag & H_P && flag & H_PDONE)) && ((size = read(fd, ((char *)h_use->block) + index, h_cmd.len_block - index)) > 0))
+	while ((!(flag & H_P && flag & H_PDONE)) && ((size = read(fd,
+				((char *)h_use->block) + index, h_cmd.len_block - index)) > 0))
 	{
 		index += size;
 		if (flag & H_P)

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 14:33:12 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 10:40:09 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 13:05:36 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,8 @@ static void		ft_ssl_print_sum(unsigned nb_reg, t_hash_use *h_use,
 		sum = h_use->registers[i];
 		while (j < h_cmd.size_register)
 		{
-			ft_printf("%.2x", h_cmd.endian ? sum.c[h_cmd.size_register - 1 - j ] : sum.c[j]);
+			ft_printf("%.2x", h_cmd.endian ?
+					sum.c[h_cmd.size_register - 1 - j] : sum.c[j]);
 			j++;
 		}
 		i++;

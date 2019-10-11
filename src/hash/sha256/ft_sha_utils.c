@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 15:17:42 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 17:30:27 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 13:58:09 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,5 +32,5 @@ void		rot_registers_sha(t_alltypes *reg, unsigned *tmp)
 	reg[REG_D].x32 = reg[REG_C].x32;
 	reg[REG_C].x32 = reg[REG_B].x32;
 	reg[REG_B].x32 = reg[REG_A].x32;
-	reg[REG_A].x32 = tmp[0] + tmp[1]; 
+	reg[REG_A].x32 = tmp[0] + tmp[1];
 }

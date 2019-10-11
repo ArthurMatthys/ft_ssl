@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 15:34:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:30:02 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 13:05:02 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 void	ft_ssl_load_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 {
-	unsigned 	index;
+	unsigned	index;
 
 	index = 0;
 	while (index < nbr)
@@ -27,7 +27,7 @@ void	ft_ssl_load_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 
 void	ft_ssl_add_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 {
-	unsigned 	index;
+	unsigned	index;
 
 	index = 0;
 	while (index < nbr)
