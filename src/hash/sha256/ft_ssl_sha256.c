@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 14:00:27 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 15:28:07 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,7 +81,7 @@ unsigned	g_sha256_k[64] =
 	0xc67178f2
 };
 
-void	ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
+void		ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
 {
 	hash_init(cmd, hash);
 	hash->registers[REG_A].x32 = 0x6a09e667;
@@ -105,7 +105,7 @@ static void	ft_sha256_update_inner(t_alltypes *reg, unsigned *block, unsigned i)
 	rot_registers_sha(reg, tmp);
 }
 
-int		ft_sha256_update(t_hash_use *hash)
+int			ft_sha256_update(t_hash_use *hash)
 {
 	unsigned	block[64];
 	t_alltypes	reg[8];
@@ -128,7 +128,7 @@ int		ft_sha256_update(t_hash_use *hash)
 	return (1);
 }
 
-void	ft_sha256_close(t_hash_cmd h_cmd,
+void		ft_sha256_close(t_hash_cmd h_cmd,
 		t_hash_use *h_use, int flag, int h_done)
 {
 	if (h_done)

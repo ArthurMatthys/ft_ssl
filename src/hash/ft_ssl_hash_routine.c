@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 13:13:00 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 15:31:03 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,18 +64,15 @@ static int	du_hash(t_hash_use *h_use, t_hash_cmd h_cmd)
 	if (!end)
 		((char *)h_use->block)[h_use->len_msg.x32 % h_cmd.len_block] = 0x80;
 	add_len(h_use, h_cmd);
-	h_cmd.update(h_use);
-	return (1);
+	return (h_cmd.update(h_use));
 }
 
 static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 {
 	int			fd;
-	int			padding_done;
 	unsigned	index;
 	size_t		size;
 
-	padding_done = 0;
 	index = 0;
 	fd = str ? open_arg(str) : 0;
 	size = 0;
@@ -88,22 +85,14 @@ static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 		if (flag & H_P)
 			write(1, ((char *)h_use->block) + index - size, size);
 		h_use->len_msg.x64 += size;
-		if (index == h_cmd.len_block)
-		{
-			h_cmd.update(h_use);
+		if (index == h_cmd.len_block && h_cmd.update(h_use) && !(index = 0))
 			ft_bzero(h_use->block, h_cmd.len_block);
-			index = 0;
-		}
 	}
 	h_use->block->c[index++] = 0x80;
-	if (index > h_cmd.len_block - h_cmd.size_len)
-	{
-		h_cmd.update(h_use);
+	if ((index > h_cmd.len_block - h_cmd.size_len) && (h_cmd.update(h_use)))
 		ft_bzero(h_use->block, h_cmd.len_block);
-	}
 	add_len(h_use, h_cmd);
-	h_cmd.update(h_use);
-	return (1);
+	return (h_cmd.update(h_use));
 }
 
 void		ft_ssl_hash_routine(t_hash_cmd h_cmd, int flag, int cas, char *arg)
