@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 15:28:07 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 15:45:52 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../../includes/ft_ssl_hash.h"
+#include "../../../../includes/ft_ssl_hash.h"
 
 unsigned	g_sha256_k[64] =
 {
@@ -96,7 +96,7 @@ void		ft_sha256_init(t_hash_cmd cmd, t_hash_use *hash)
 
 static void	ft_sha256_update_inner(t_alltypes *reg, unsigned *block, unsigned i)
 {
-	unsigned	tmp[2];
+	size_t	tmp[2];
 
 	tmp[0] = reg[REG_H].x32 + bigs1(reg[REG_E].x32) + ch(reg[REG_E].x32,
 			reg[REG_F].x32, reg[REG_G].x32) + g_sha256_k[i] + block[i];

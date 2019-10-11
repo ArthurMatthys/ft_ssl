@@ -11,5 +11,6 @@ check_test ()
 
 
 check_test './tests/test_md5.sh'
+check_test './tests/test_sha224.sh'
 check_test './tests/test_sha256.sh'
 #check_test './tests/test_sha512.sh'

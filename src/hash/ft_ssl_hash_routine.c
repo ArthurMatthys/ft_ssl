@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 15:31:03 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 16:21:35 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,6 +88,7 @@ static int	hash_input(char *str, t_hash_use *h_use, t_hash_cmd h_cmd, int flag)
 		if (index == h_cmd.len_block && h_cmd.update(h_use) && !(index = 0))
 			ft_bzero(h_use->block, h_cmd.len_block);
 	}
+	close(fd);
 	h_use->block->c[index++] = 0x80;
 	if ((index > h_cmd.len_block - h_cmd.size_len) && (h_cmd.update(h_use)))
 		ft_bzero(h_use->block, h_cmd.len_block);

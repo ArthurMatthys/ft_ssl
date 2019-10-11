@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 10:52:14 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/11 15:48:04 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -126,6 +126,14 @@ void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done);
 
 /*
+** sha 224
+*/
+
+void			ft_sha224_init(t_hash_cmd cmd, t_hash_use *hash);
+void			ft_sha224_close(t_hash_cmd h_cmd, t_hash_use *h_use,
+		int flag, int h_done);
+
+/*
 ** sha 64 bytes
 */
 
@@ -133,9 +141,9 @@ unsigned		smas0(unsigned word);
 unsigned		smas1(unsigned word);
 unsigned		bigs0(unsigned reg);
 unsigned		bigs1(unsigned reg);
-unsigned		ch(unsigned reg_e, unsigned reg_f, unsigned reg_g);
-unsigned		maj(unsigned reg_a, unsigned reg_b, unsigned reg_c);
-void			rot_registers_sha(t_alltypes *reg, unsigned *tmp);
+size_t		ch(size_t reg_e, size_t reg_f, size_t reg_g);
+size_t		maj(size_t reg_a, size_t reg_b, size_t reg_c);
+void			rot_registers_sha(t_alltypes *reg, size_t *tmp);
 
 /*
 ** sha512
