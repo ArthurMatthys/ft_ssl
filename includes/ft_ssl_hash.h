@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:55:19 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 13:03:58 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -117,8 +117,8 @@ uint32_t		f3(t_alltypes *abcd);
 ** sha2
 */
 
-size_t		ch(size_t reg_e, size_t reg_f, size_t reg_g);
-size_t		maj(size_t reg_a, size_t reg_b, size_t reg_c);
+size_t			ch(size_t reg_e, size_t reg_f, size_t reg_g);
+size_t			maj(size_t reg_a, size_t reg_b, size_t reg_c);
 void			rot_registers_sha(t_alltypes *reg, size_t *tmp);
 
 /*
@@ -153,13 +153,13 @@ void			ft_sha256_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 ** sha 64 bits
 */
 
-size_t		smas0l(size_t word);
-size_t		smas1l(size_t word);
-size_t		bigs0l(size_t reg);
-size_t		bigs1l(size_t reg);
-size_t		leftrotl(size_t f, short g);
-size_t		rightrotl(size_t f, short g);
-size_t		rightshiftl(size_t f, short g);
+size_t			smas0l(size_t word);
+size_t			smas1l(size_t word);
+size_t			bigs0l(size_t reg);
+size_t			bigs1l(size_t reg);
+size_t			leftrotl(size_t f, short g);
+size_t			rightrotl(size_t f, short g);
+size_t			rightshiftl(size_t f, short g);
 
 /*
 ** sha384

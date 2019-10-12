@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 08:15:20 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:15:00 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 13:08:08 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,12 +28,12 @@ unsigned		rightshift_32(unsigned word, short shift)
 	return ((word & 0xFFFFFFFF) >> shift);
 }
 
-size_t		rightrotl(size_t word, short rot)
+size_t			rightrotl(size_t word, short rot)
 {
 	return ((rightshiftl(word, rot)) | (word << (64 - rot)));
 }
 
-size_t		rightshiftl(size_t word, short shift)
+size_t			rightshiftl(size_t word, short shift)
 {
 	return ((word & 0xFFFFFFFFFFFFFFFF) >> shift);
 }

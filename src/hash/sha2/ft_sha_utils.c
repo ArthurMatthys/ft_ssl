@@ -6,19 +6,19 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 15:17:42 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 15:59:12 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 13:07:20 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../../includes/ft_ssl_hash.h"
 
-size_t	ch(size_t reg_e, size_t reg_f, size_t reg_g)
+size_t		ch(size_t reg_e, size_t reg_f, size_t reg_g)
 {
 	return ((reg_e & reg_f) ^ (~reg_e & reg_g));
 }
 
-size_t	maj(size_t reg_a, size_t reg_b, size_t reg_c)
+size_t		maj(size_t reg_a, size_t reg_b, size_t reg_c)
 {
 	return ((reg_a & reg_b) ^ (reg_a & reg_c) ^ (reg_b & reg_c));
 }
