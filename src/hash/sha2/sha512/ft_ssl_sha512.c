@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:48 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 16:28:30 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 12:49:37 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -114,10 +114,10 @@ static void	ft_sha512_update_inner(t_alltypes *reg, size_t *block, unsigned i)
 {
 	size_t	tmp[2];
 
-	tmp[0] = reg[REG_H].x32 + bigs1(reg[REG_E].x32) + ch(reg[REG_E].x32,
-			reg[REG_F].x32, reg[REG_G].x32) + g_sha512_k[i] + block[i];
-	tmp[1] = bigs0(reg[REG_A].x32) +
-		maj(reg[REG_A].x32, reg[REG_B].x32, reg[REG_C].x32);
+	tmp[0] = reg[REG_H].x64 + bigs1l(reg[REG_E].x64) + ch(reg[REG_E].x64,
+			reg[REG_F].x64, reg[REG_G].x64) + g_sha512_k[i] + block[i];
+	tmp[1] = bigs0l(reg[REG_A].x64) +
+		maj(reg[REG_A].x64, reg[REG_B].x64, reg[REG_C].x64);
 	rot_registers_sha(reg, tmp);
 }
 
@@ -131,11 +131,11 @@ int				ft_sha512_update(t_hash_use *hash)
 	cpy = (size_t *)hash->block;
 	i = -1;
 	while (++i < 16)
-		block[i] = *((unsigned *)ft_memrev(&(cpy[i]), 4));
+		block[i] = *((size_t *)ft_memrev(&(cpy[i]), 8));
 	i = 15;
 	while (++i < 80)
-		block[i] = block[i - 16] + smas0(block[i - 15])
-			+ block[i - 7] + smas1(block[i - 2]);
+		block[i] = block[i - 16] + smas0l(block[i - 15])
+			+ block[i - 7] + smas1l(block[i - 2]);
 	ft_ssl_load_registers(reg, hash->registers, 8);
 	i = -1;
 	while (++i < 80)
@@ -148,6 +148,6 @@ void			ft_sha512_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done)
 {
 	if (h_done)
-		ft_ssl_print_hash(h_cmd, h_use, flag, 8);
+		ft_ssl_print_hash(h_cmd, h_use, flag, 64);
 	hash_destroy(h_use);
 }

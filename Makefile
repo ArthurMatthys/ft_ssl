@@ -17,7 +17,10 @@ vpath %.c src/hash/md5
 vpath %.c src/hash/sha2
 vpath %.c src/hash/sha2/sha224
 vpath %.c src/hash/sha2/sha256
+vpath %.c src/hash/sha2/sha384
 vpath %.c src/hash/sha2/sha512
+vpath %.c src/hash/sha2/sha512224
+vpath %.c src/hash/sha2/sha512256
 
 .PHONY: all clean fclean re
 
@@ -46,9 +49,13 @@ SRC = ft_ssl.c \
 	  ft_ssl_md5.c \
       ft_sha_utils.c \
       ft_sha_s32.c \
+      ft_sha_s64.c \
 	  ft_ssl_sha224.c \
 	  ft_ssl_sha256.c \
-	  ft_ssl_sha512.c
+	  ft_ssl_sha384.c \
+	  ft_ssl_sha512.c \
+	  ft_ssl_sha512224.c \
+	  ft_ssl_sha512256.c
 
 O_FILES = $(SRC:%.c=$(OBJDIR)%.o)
 

@@ -1,5 +1,5 @@
 #/!bin/bash
-SHA512_PERSO="./ft_ssl SHA512 "
+SHA512_PERSO="./ft_ssl sha512 "
 SHA512_ORIGIN="shasum -a 512 | cut -d' ' -f 1 "
 
 COL=$(tput cols)

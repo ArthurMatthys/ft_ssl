@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 14:30:30 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 12:48:24 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -122,6 +122,6 @@ void		ft_md5_close(t_hash_cmd h_cmd, t_hash_use *h_use,
 		int flag, int h_done)
 {
 	if (h_done)
-		ft_ssl_print_hash(h_cmd, h_use, flag, 4);
+		ft_ssl_print_hash(h_cmd, h_use, flag, 16);
 	hash_destroy(h_use);
 }

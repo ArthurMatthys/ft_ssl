@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/02 16:08:41 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 16:21:35 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 12:15:52 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,11 @@ static void	add_len(t_hash_use *h_use, t_hash_cmd h_cmd)
 	{
 		cpy.x64 *= 8;
 		cpy = h_cmd.endian ? *((t_alltypes *)ft_memrev(&(cpy), 16)) : cpy;
-		((char *)(h_use->block))[h_cmd.len_block - 16] = cpy.x128;
+		while (i < 16)
+		{
+			((char *)(h_use->block))[h_cmd.len_block - 16 + i] = cpy.c[i];
+			i++;
+		}
 	}
 	else if (h_cmd.size_len == 8)
 	{

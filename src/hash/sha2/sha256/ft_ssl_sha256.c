@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 15:45:52 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/12 12:48:12 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -132,6 +132,6 @@ void		ft_sha256_close(t_hash_cmd h_cmd,
 		t_hash_use *h_use, int flag, int h_done)
 {
 	if (h_done)
-		ft_ssl_print_hash(h_cmd, h_use, flag, 8);
+		ft_ssl_print_hash(h_cmd, h_use, flag, 32);
 	hash_destroy(h_use);
 }
