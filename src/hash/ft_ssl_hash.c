@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:48:14 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:55:37 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/13 14:09:15 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -100,7 +100,11 @@ void		ssl_hash(int argc, char **argv, int index)
 		if ((flag & H_P) || argc == 2)
 			ft_ssl_hash_routine(h_cmd, flag, C_STDIN, NULL);
 		else if (i == argc && flag & H_S)
-			ft_printf("-S SHOULD BE FOLLOWED BY A STRING\n");
+		{
+			ft_putstr_fd(h_cmd.cmd, 2);
+			ft_putstr_fd(": option requires an argument -- s\n", 2);
+			ssl_usage();
+		}
 		else if (i < argc)
 			ft_ssl_hash_routine(h_cmd, flag, flag & H_S ? C_STRING : C_FILE,\
 					argv[i]);

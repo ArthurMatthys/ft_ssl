@@ -23,7 +23,7 @@ test_md5 ()
 		(eval $3 "$4" | eval ${MD5_PERSO} $2) > my_hash.output
 		(eval $3 "$4" | eval ${MD5_ORIGIN} $2) > origin_hash.output 
 	fi
-
+ 
 	diff my_hash.output origin_hash.output
 	if [ $? -eq 0 ]
 	then
@@ -34,8 +34,6 @@ test_md5 ()
 		printf "%s" "${RED}[KO]${NORMAL}" $'\n'
 		RES=1
 	fi
-	rm my_hash.output
-	rm origin_hash.output
 }
 
 test_md5 'empty string 0' '-s ""'
@@ -65,7 +63,16 @@ test_md5 'long string 2' '-s "dailleurs clcreuso je suis dsol mais mes entrainjd
 test_md5 'stdin 0' '-p -p -p' 'echo ' 'Bonjour'
 test_md5 'stdin 1' '-p' 'echo ' 'Bonjour les amis'
 test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
-test_md5 'stdins 0' '-p -p' 'echo ' 'Bonjourhtkreklhfgd'
+
+test_md5 'end -s 0' '-s'
+test_md5 'end -s 1' 'src -s'
+test_md5 'end -s 2' '-s test Makefile -s'
+
+test_md5 'file then string 0' 'auteur -s test'
+test_md5 'file then directory 0' 'auteur src'
+
+test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
+test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
 
 test_md5 'no flag 0' 'auteur' 
 test_md5 'no flag 1' 'Makefile' 
