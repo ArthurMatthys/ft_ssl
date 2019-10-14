@@ -39,6 +39,17 @@ test_md5 ()
 test_md5 'empty string 0' '-s ""'
 test_md5 'empty input 0' '' 'echo ' ''
 
+test_md5 'subject 0' '' 'echo ' '"pickle rick"'
+test_md5 'subject 1' '-p' 'echo ' '"Do not pity the dead, Harry."'
+test_md5 'subject 2' '-q -r' 'echo ' '"Pity the living."'
+test_md5 'subject 3' '-s "pity those that aren\x27t following baerista on spotify."'
+test_md5 'subject 4' '-p auteur' 'echo ' '"be sure to handle edge cases carefully"'
+test_md5 'subject 5' 'auteur' 'echo ' '"some of this will not make sense at first"'
+test_md5 'subject 6' '-p -r auteur' 'echo ' '"but eventually you will understand"'
+test_md5 'subject 7' '-p -s "foo" auteur' 'echo ' '"GL HF let\x27s go"'
+test_md5 'subject 8' '-r -p -s "foo" auteur -s "bar"' 'echo ' '"one more thing"'
+test_md5 'subject 9' '-r -q -p -s "foo" auteur' 'echo ' '"just to be extra clear"'
+
 test_md5 'simple string 0' '-s "easy"'
 test_md5 'simple string 1' '-s "This test contain 48 bytes so I made it biggerr"' 
 test_md5 'simple string 2' '-s "Hello"'
