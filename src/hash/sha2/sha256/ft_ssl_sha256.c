@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:23 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:48:12 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:43 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 unsigned	g_sha256_k[64] =
 {

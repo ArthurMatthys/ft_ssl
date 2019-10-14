@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 14:33:12 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 13:07:47 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:05 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 static void		ft_ssl_print_sum(unsigned nb_bytes, t_hash_use *h_use,
 		t_hash_cmd h_cmd)

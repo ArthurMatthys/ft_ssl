@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/12 12:17:34 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:49:02 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:49 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 void			ft_sha384_init(t_hash_cmd cmd, t_hash_use *hash)
 {

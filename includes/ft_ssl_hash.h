@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 13:03:58 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:34:20 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,11 +79,11 @@ typedef union	u_blockx32
 	unsigned char	c[4];
 }				t_blockx32;
 
-t_hash_cmd	g_hash_cmd[NB_HASH_FUNCTION];
-
 /*
 ** Global use
 */
+
+void			ssl_hash(int argc, char **argv, t_hash_cmd h_cmd);
 
 void			hash_init(t_hash_cmd cmd, t_hash_use *hash);
 void			hash_destroy(t_hash_use *hash);

@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 15:34:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/11 13:05:02 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:11 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 void	ft_ssl_load_registers(t_alltypes *dst, t_alltypes *src, unsigned nbr)
 {

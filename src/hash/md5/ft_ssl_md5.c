@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 09:37:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 12:48:24 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:25 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 t_hash_cst	g_hash_md5[64] = {
 	{&f0, 0xd76aa478, 7, 0},

@@ -6,12 +6,12 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 16:42:48 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/12 13:08:33 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:39:58 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_ssl_hash.h"
+#include "ft_ssl_hash.h"
 
 size_t	g_sha512_k[80] =
 {

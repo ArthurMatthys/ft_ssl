@@ -6,20 +6,20 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:40:58 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/13 14:10:59 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:38:17 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../includes/ft_ssl.h"
+#include "ft_ssl.h"
 
-char	*g_dgst_cmd[] = 
+char	*g_dgst_cmd[] =
 {"md5", "sha224", "sha256", "sha384", "sha512", "sha512224", "sha512256", NULL};
 
-char	*g_std_cmd[] = 
+char	*g_std_cmd[] =
 {NULL};
 
-char	*g_Cipher_cmd[] = 
+char	*g_cipher_cmd[] =
 {NULL};
 
 int			ssl_usage(void)
@@ -56,7 +56,7 @@ int			ssl_list_command(char *cmd)
 	ft_putstr_fd("Message Digest commands:\n", 2);
 	print_cmd(g_dgst_cmd);
 	ft_putstr_fd("Cipher commands:\n", 2);
-	print_cmd(g_Cipher_cmd);
+	print_cmd(g_cipher_cmd);
 	return (0);
 }
 

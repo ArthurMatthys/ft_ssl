@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 15:58:32 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 15:40:07 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 09:37:25 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,5 @@ int				ssl_list_command(char *cmd);
 int				error_open(char *str, char *cmd_name, int fd);
 int				open_arg(char *str);
 int				read_fd(t_alltypes *buff, int fd, int to_read);
-
-void			ssl_hash(int argc, char **argv, int index);
 
 #endif
