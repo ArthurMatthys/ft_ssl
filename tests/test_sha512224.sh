@@ -17,14 +17,14 @@ test_sha512224 ()
 	printf "SHA512224 -> %s" "$1"
 	if [ -z $3 ]
 	then
-		(eval ${SHA512224_PERSO} $2) > my_hash.output
-		(eval ${SHA512224_ORIGIN} $2) > origin_hash.output
+		(eval ${SHA512224_PERSO} $2) > my_hash
+		(eval ${SHA512224_ORIGIN} $2) > origin_hash
 	else
-		(eval $3 "$4" | eval ${SHA512224_PERSO} $2) > my_hash.output
-		(eval $3 "$4" | eval ${SHA512224_ORIGIN} $2) > origin_hash.output 
+		(eval $3 "$4" | eval ${SHA512224_PERSO} $2) > my_hash
+		(eval $3 "$4" | eval ${SHA512224_ORIGIN} $2) > origin_hash 
 	fi
 
-	diff my_hash.output origin_hash.output
+	diff my_hash origin_hash
 	if [ $? -eq 0 ]
 	then
 		$MOVE_TO_COL
@@ -34,8 +34,8 @@ test_sha512224 ()
 		printf "%s" "${RED}[KO]${NORMAL}" $'\n'
 		RES=1
 	fi
-	rm my_hash.output
-	rm origin_hash.output
+	rm my_hash
+	rm origin_hash
 }
 
 test_sha512224 'empty input 0' '' 'echo ' ''

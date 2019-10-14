@@ -16,14 +16,14 @@ test_sha384 ()
 	printf "SHA384 -> %s" "$1"
 	if [ -z $3 ]
 	then
-		(eval ${SHA384_PERSO} $2) > my_hash.output
-		(eval ${SHA384_ORIGIN} $2) > origin_hash.output
+		(eval ${SHA384_PERSO} $2) > my_hash
+		(eval ${SHA384_ORIGIN} $2) > origin_hash
 	else
-		(eval $3 "$4" | eval ${SHA384_PERSO} $2) > my_hash.output
-		(eval $3 "$4" | eval ${SHA384_ORIGIN} $2) > origin_hash.output 
+		(eval $3 "$4" | eval ${SHA384_PERSO} $2) > my_hash
+		(eval $3 "$4" | eval ${SHA384_ORIGIN} $2) > origin_hash 
 	fi
 
-	diff my_hash.output origin_hash.output
+	diff my_hash origin_hash
 	if [ $? -eq 0 ]
 	then
 		$MOVE_TO_COL
@@ -33,8 +33,8 @@ test_sha384 ()
 		printf "%s" "${RED}[KO]${NORMAL}" $'\n'
 		RES=1
 	fi
-	rm my_hash.output
-	rm origin_hash.output
+	rm my_hash
+	rm origin_hash
 }
 
 test_sha384 'empty input 0' '' 'echo ' ''
