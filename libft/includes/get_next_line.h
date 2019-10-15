@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/13 12:27:35 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2018/07/25 16:41:55 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:30:03 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,8 +14,8 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include "libft.h"
 # include <unistd.h>
-# define BUFF_SIZE	666
 
 typedef struct		s_fd
 {

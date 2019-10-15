@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:05:59 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 13:12:48 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 14:56:08 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,19 +43,19 @@ const t_hash_cmd	g_hash_cmd[] =
 		&ft_sha512256_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
 };
 
-void	get_command(int argc, char **argv)
+void	get_command(int argc, char **argv, char *cmd)
 {
 	int	i;
 
 	i = 0;
 	while (g_list_cmd[i].name)
 	{
-		if (ft_strequ(argv[1], g_list_cmd[i].name))
+		if (ft_strequ(cmd, g_list_cmd[i].name))
 		{
 			g_list_cmd[i].handler(argc, argv, g_hash_cmd[i]);
 			return ;
 		}
 		i++;
 	}
-	ssl_list_command(argv[1]);
+	ssl_list_command(cmd);
 }

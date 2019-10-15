@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 13:15:28 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:29:40 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define BUFF_SIZE	4096
 # define STD_ERR 2
 # define EXIT_FAILLURE 1
 # define EXIT_SUCCES 0

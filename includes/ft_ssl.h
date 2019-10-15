@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 15:58:32 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 13:03:32 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:30:27 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,7 @@ typedef struct	s_list_cmd
 	int			index;
 }				t_list_cmd;
 
-void			get_command(int argc, char **argv);
+void			get_command(int argc, char **argv, char *cmd);
 int				ssl_usage(void);
 int				ssl_list_command(char *cmd);
 int				error_open(char *str, char *cmd_name, int fd);
