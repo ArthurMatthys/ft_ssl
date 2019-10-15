@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 15:58:32 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 09:37:25 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:03:32 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,6 @@
 # define FD_NOTFOUND -1
 # define FD_NSTATS -2
 # define FD_DIR -3
-
-# define NB_CMD 7
 
 typedef	void	(*t_handler)();
 

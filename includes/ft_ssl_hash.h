@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 09:34:20 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:09:11 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,6 @@
 
 # include "ft_ssl.h"
 
-# define NB_HASH_FUNCTION 7
 # define NB_FLAG_HASH 4
 
 # define H_S (1 << 0)

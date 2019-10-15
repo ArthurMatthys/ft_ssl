@@ -33,6 +33,7 @@ OBJDIR = ./obj/
 INCDIR = ./includes/
 LFTDIR = ./libft/
 H_FILE = $(INCDIR)ft_ssl.h $(INCDIR)ft_ssl_hash.h
+LIB=$(LFTDIR)libft.a
 
 INCLUDE = -I $(INCDIR) -I $(LFTDIR)includes
 
@@ -67,7 +68,7 @@ NAME_UP = FT_SSL
 
 all: lib $(NAME) 
 
-$(NAME): $(OBJDIR) $(O_FILES)
+$(NAME): $(LIB) $(OBJDIR) $(O_FILES)
 	@printf "\r\033[K[$(NAME_UP)] \033[1;32mLinking...\033[0m"
 	@$(CC) $(CFLAGS) -o $(NAME) $(O_FILES) -L$(LFTDIR) -lft $(INCLUDE)
 	@printf "\r\033[K[$(NAME_UP)] \033[1;32mDone!\033[0m\n"
@@ -93,6 +94,6 @@ fclean: clean
 	@make -C $(LFTDIR) fclean
 
 test : all
-	./test_ssl.sh
+	@./test_ssl.sh 2>/dev/null
 
 re: fclean all

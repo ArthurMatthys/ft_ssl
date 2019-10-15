@@ -57,7 +57,7 @@ NAME_UP = LIBFT
 
 all : $(NAME)
 
-$(NAME) : $(OBJDIR) $(O_FILES)
+$(NAME): $(OBJDIR) $(O_FILES)
 	@printf "\r\033[K[$(NAME_UP)] \033[1;32mLinking...\033[0m"
 	@ar rcs $(NAME) $(O_FILES)
 	@ranlib $(NAME)
@@ -72,7 +72,7 @@ $(OBJDIR)%.o: %.c $(H_FILE)
 
 clean:
 	@printf "[$(NAME_UP)] \033[1;31mCleaned .o!\033[0m\n"
-	@rm -rf $(O_FILES)
+	@rm -rf $(OBJDIR)
 
 fclean: clean
 	@printf "[$(NAME_UP)] \033[1;31mCleaned .a!\033[0m\n"

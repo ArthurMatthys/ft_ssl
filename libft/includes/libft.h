@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 15:53:56 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 13:15:28 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define STD_ERR 2
+# define EXIT_FAILLURE 1
+# define EXIT_SUCCES 0
 
 typedef struct		s_list
 {
