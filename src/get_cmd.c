@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:05:59 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 14:56:08 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/16 12:02:46 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,7 @@ void	get_command(int argc, char **argv, char *cmd)
 	int	i;
 
 	i = 0;
-	while (g_list_cmd[i].name)
+	while (cmd && g_list_cmd[i].name)
 	{
 		if (ft_strequ(cmd, g_list_cmd[i].name))
 		{
