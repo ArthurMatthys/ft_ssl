@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 17:07:24 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 13:09:11 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 10:03:00 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,8 @@
 # define REG_F 5
 # define REG_G 6
 # define REG_H 7
+
+typedef	void	(*t_handler)();
 
 typedef struct	s_hash_cmd
 {

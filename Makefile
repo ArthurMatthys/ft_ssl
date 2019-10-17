@@ -40,6 +40,7 @@ INCLUDE = -I $(INCDIR) -I $(LFTDIR)includes
 SRC = ft_ssl.c \
 	  ft_ssl_usage.c \
 	  get_cmd.c \
+	  stdin_to_cmd.c \
 	  read_file.c \
 	  ft_ssl_hash_utils.c \
       ft_ssl_utils_reg.c \
