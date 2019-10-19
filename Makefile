@@ -12,6 +12,7 @@
 # **************************************************************************** #
 
 vpath %.c src
+vpath %.c src/parser
 vpath %.c src/hash
 vpath %.c src/hash/md5
 vpath %.c src/hash/sha2
@@ -40,23 +41,39 @@ INCLUDE = -I $(INCDIR) -I $(LFTDIR)includes
 SRC = ft_ssl.c \
 	  ft_ssl_usage.c \
 	  get_cmd.c \
-	  stdin_to_cmd.c \
 	  read_file.c \
+	  \
+	  argv_utils.c \
+	  dispatcher.c \
+	  handle_raw_mode.c \
+	  input_echo.c \
+	  input_stdin.c \
+	  stdin_to_cmd.c \
+	  stdin_to_argv.c \
+	  \
+	  ft_ssl_hash.c \
+	  ft_ssl_hash_routine.c \
 	  ft_ssl_hash_utils.c \
       ft_ssl_utils_reg.c \
-	  ft_ssl_hash_routine.c \
-	  ft_ssl_hash.c \
 	  ft_ssl_print_hash.c \
+	  \
 	  ft_md5_fct.c \
 	  ft_ssl_md5.c \
-      ft_sha_utils.c \
+	  \
       ft_sha_s32.c \
       ft_sha_s64.c \
+      ft_sha_utils.c \
+	  \
 	  ft_ssl_sha224.c \
+	  \
 	  ft_ssl_sha256.c \
+	  \
 	  ft_ssl_sha384.c \
+	  \
 	  ft_ssl_sha512.c \
+	  \
 	  ft_ssl_sha512224.c \
+	  \
 	  ft_ssl_sha512256.c
 
 O_FILES = $(SRC:%.c=$(OBJDIR)%.o)

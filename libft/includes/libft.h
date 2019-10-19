@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 18:44:56 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/19 13:32:23 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,8 @@
 # include <unistd.h>
 
 # define BUFF_SIZE	4096
-# define STDIN 2
+# define STDIN 0
+# define STDOUT 1
 # define STDERR 2
 # define EXIT_FAILLURE 1
 # define EXIT_SUCCES 0
@@ -83,6 +84,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_isprint(int c);
 int					ft_isascii(int c);
+int					ft_strindex(char *str, char c);
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -93,6 +95,7 @@ size_t				ft_tablen(char **tab);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strdup(const char *s1);
+char				*ft_strndup(const char *s, size_t n);
 char				*ft_strncat(char *dest, const char *src, size_t n);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strchr(const char *s, int c);
