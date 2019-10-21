@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   input_echo.c                                     .::    .:/ .      .::   */
+/*   ft_realloc.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/19 11:20:37 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:23:19 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/21 09:43:00 by amatthys     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/21 10:31:37 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../../includes/ft_ssl_stdin.h"
+#include "libft.h"
+#include "ft_printf.h"
 
-char	*get_res_echo(void)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	char	buff[BUFF_SIZE + 1];
-	char	*ret;
-	char	*tmp;
+	void	*new;
 
-	ret = NULL;
-	ft_bzero(buff, BUFF_SIZE + 1);
-	while (read(0, buff, BUFF_SIZE) > 0)
+	new = ft_memalloc_wrapper(size);
+	if (ptr)
 	{
-		tmp = ret;
-		if (!ret)
-			ret = ft_strdup(buff);
-		else
-			ret = ft_strjoin(ret, buff);
-		free(tmp);
+		new = ft_memmove(new, ptr, size);
+		free(ptr);
 	}
-	return (ret);
+	ptr = new;
+	return (ptr);
 }

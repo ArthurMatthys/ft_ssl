@@ -46,8 +46,10 @@ SRC = ft_ssl.c \
 	  argv_utils.c \
 	  dispatcher.c \
 	  handle_raw_mode.c \
+	  handle_history.c \
 	  input_echo.c \
 	  input_stdin.c \
+	  line_edit.c \
 	  stdin_to_cmd.c \
 	  stdin_to_argv.c \
 	  \

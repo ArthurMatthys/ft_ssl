@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/19 13:32:23 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 09:50:28 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,6 +74,7 @@ void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
 void				*ft_memalloc_wrapper(size_t size);
+void				*ft_realloc(void *ptr, size_t size);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 long long			ft_atoi(const char *nptr);
