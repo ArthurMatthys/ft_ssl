@@ -6,14 +6,14 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:28:31 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:24:42 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:32:23 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_stdin.h"
 
-char	*read_line(const char *prompt)
+char	*read_line(const char *prompt, t_history *history)
 {
 	int		read;
 	char	*res;
@@ -29,8 +29,7 @@ char	*read_line(const char *prompt)
 	{
 		if (enablerawmode() == -1)
 			return (NULL);
-		read = handle_stdin(prompt, &res);
-		free_history();
+		read = handle_stdin(prompt, &res, history);
 		if (read < 0)
 		{
 			ft_putstr_fd("Failed to malloc", 2);

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/21 09:53:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:52:47 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:09:29 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,9 +30,6 @@ static void	print_append(t_to_write *print, char *str, size_t size)
 
 	if (print->str)
 	{
-		ft_printf("%s", print->str);
-		ft_printf("%d", print->size);
-		ft_printf("%d", size);
 		new = ft_strjoin(print->str, str);
 		free(print->str);
 	}

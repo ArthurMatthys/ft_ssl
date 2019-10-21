@@ -6,40 +6,33 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/21 09:01:39 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:36:52 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:39:24 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_stdin.h"
 
-t_history	**get_history(void)
-{
-	static t_history	*lst = NULL;
-
-	return (&lst);
-}
-
-void		add_history(t_line_edit *line)
+void		add_history(t_history *history, char *new_line)
 {
 	t_history	*new;
-	t_history	**all;
 
-	all = get_history();
-	if (!line->size_buff)
+	if (!new_line)
 		return ;
 	ft_printf("new !\n");
 	new = (t_history *)ft_memalloc_wrapper(sizeof(t_history));
-	new->line = ft_strdup(line->buff);
+	new->line = ft_strdup(new_line);
 	new->next = NULL;
-	new->previous = *(line->history);
-	*all = new;
+	new->previous = history;
+	history = new;
 }
 
 static void	history_up(t_line_edit *line, int direction)
 {
 	ft_printf("\r\nyooooooo\r\n");
-	if (!(line->actual->previous))
+	if (!(line->actual->previous) && direction)
+		return ;
+	if (!(line->actual->next) && !direction)
 		return ;
 	if (direction)
 		line->actual = line->actual->previous;
@@ -50,21 +43,17 @@ static void	history_up(t_line_edit *line, int direction)
 	refresh_line(line);
 }
 
-void		free_history(void)
+void		free_history(t_history *history)
 {
-	t_history	**lst;
 	t_history	*curr;
 
-	lst = get_history();
-	while (lst && *lst)
+	while (history)
 	{
-		curr = *lst;
-		*lst = (*lst)->next;
+		curr = history;
+		history = history->next;
 		free(curr->line);
 		free(curr);
 	}
-	ft_memdel((void **)lst);
-	*lst = NULL;
 }
 
 void		move_history(t_line_edit *line)

@@ -6,33 +6,25 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:29:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:30:09 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:35:47 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/ft_ssl_stdin.h"
 
-static void		init_line(t_line_edit *line, char *str, const char *prompt)
+static void		init_line(t_line_edit *line, const char *prompt,
+		t_history *history)
 {
 	line->prompt = prompt;
 	line->p_len = ft_strlen((char*)prompt);
-	if (str)
+	line->buff = NULL;
+	line->size_buff = 0;
+	line->actual = history; 
+	while (history)
 	{
-		line->buff = str;
-		line->size_buff = ft_strlen(str);
-	}
-	else
-	{
-		line->buff = NULL;
-		line->size_buff = 0;
-	}
-	line->history = get_history();
-	line->actual = *(line->history); 
-	while (line->history && *(line->history))
-	{
-		ft_printf("%s\n", (*(line->history))->line);
-		*(line->history) = (*(line->history))->previous;
+		ft_printf("%s\n", history->line);
+		history = history->previous;
 	}
 }
 
@@ -53,13 +45,13 @@ static void		add_char(t_line_edit *line, char c)
 	refresh_line(line);
 }
 
-int		handle_stdin(const char *prompt, char **res)
+int		handle_stdin(const char *prompt, char **res, t_history *history)
 {
 	char	c;
 	int		nread;
 	t_line_edit	line;
 
-	init_line(&line, *res, prompt);
+	init_line(&line, prompt, history);
 	write(1, line.prompt, line.p_len);
 	while (1)
 	{
@@ -70,7 +62,6 @@ int		handle_stdin(const char *prompt, char **res)
 		{
 			if (!line.size_buff)
 				return (0);
-			add_history(&line);
 			*res = ft_strdup(line.buff);
 			free(line.buff);
 			return (line.size_buff);

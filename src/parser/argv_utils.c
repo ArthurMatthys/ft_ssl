@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:33:13 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 11:24:06 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:31:51 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,6 @@
 char		*remove_nl(char *input)
 {
 	char	*cpy;
-	char	*tmp;
 	size_t	len;
 
 	len = ft_strlen(input);
@@ -26,9 +25,6 @@ char		*remove_nl(char *input)
 		input = ft_strndup(input, len - 1);
 		free(cpy);
 	}
-	tmp = input;
-	input = ft_strjoin("./ft_ssl ", input);
-	free(tmp);
 	return (input);
 }
 
