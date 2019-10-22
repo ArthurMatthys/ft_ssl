@@ -6,7 +6,7 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:26:54 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 09:50:28 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 09:15:03 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,7 +57,7 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
-void				ft_putnbr(int c);
+void				ft_putnbr(long long c);
 void				ft_freetab(char **tab);
 int					ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);

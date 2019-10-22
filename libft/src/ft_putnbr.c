@@ -6,14 +6,14 @@
 /*   By: amatthys <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/24 13:31:34 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 13:31:35 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 09:15:08 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int c)
+void	ft_putnbr(long long c)
 {
 	if (c >= 10)
 	{

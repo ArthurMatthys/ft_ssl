@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:29:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:35:47 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 11:00:43 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,24 +14,20 @@
 #include "../../includes/ft_ssl_stdin.h"
 
 static void		init_line(t_line_edit *line, const char *prompt,
-		t_history *history)
+		t_history **history)
 {
 	line->prompt = prompt;
 	line->p_len = ft_strlen((char*)prompt);
 	line->buff = NULL;
 	line->size_buff = 0;
-	line->actual = history; 
-	while (history)
-	{
-		ft_printf("%s\n", history->line);
-		history = history->previous;
-	}
+	line->actual = *history;
+	write(1, line->prompt, line->p_len);
 }
 
 static void		delete_last_char(t_line_edit *line)
 {
 	if (!(line->size_buff))
-		return;
+		return ;
 	line->buff[line->size_buff - 1] = '\0';
 	line->size_buff--;
 	refresh_line(line);
@@ -45,20 +41,17 @@ static void		add_char(t_line_edit *line, char c)
 	refresh_line(line);
 }
 
-int		handle_stdin(const char *prompt, char **res, t_history *history)
+int				handle_stdin(const char *prompt, char **res,
+		t_history **history)
 {
-	char	c;
-	int		nread;
+	char		c;
+	int			nread;
 	t_line_edit	line;
 
 	init_line(&line, prompt, history);
-	write(1, line.prompt, line.p_len);
-	while (1)
+	while ((nread = read(0, &c, 1) > 0))
 	{
-		nread = read(0, &c, 1);
-		if (nread <= 0)
-			return (line.size_buff);
-		else if (c == CTRL_D || c == ENTER)
+		if (c == CTRL_D || c == ENTER)
 		{
 			if (!line.size_buff)
 				return (0);
@@ -73,5 +66,5 @@ int		handle_stdin(const char *prompt, char **res, t_history *history)
 		else
 			add_char(&line, c);
 	}
-	return (0);
+	return (line.size_buff);
 }

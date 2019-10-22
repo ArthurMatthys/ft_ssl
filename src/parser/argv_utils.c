@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:33:13 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:31:51 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 10:42:25 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -86,6 +86,7 @@ static char	*remove_excess(char *input, int state)
 	else
 		excess = ft_strrchr(input, '`');
 	len_excess = ft_strlen(excess);
+	ft_printf("|%s| removed due to the lack of quote parity\n", excess);
 	return (ft_strndup(input, ft_strlen(input) - len_excess));
 }
 

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/21 09:53:55 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:09:29 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 10:57:17 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ static void	init_print(t_to_write *print)
 	print->size = 0;
 }
 
-static void free_print(t_to_write *print)
+static void	free_print(t_to_write *print)
 {
 	free(print->str);
 }
@@ -28,7 +28,10 @@ static void	print_append(t_to_write *print, char *str, size_t size)
 {
 	char	*new;
 
-	if (print->str)
+	new = NULL;
+	if (!str || !size)
+		;
+	else if (print->str)
 	{
 		new = ft_strjoin(print->str, str);
 		free(print->str);
@@ -37,7 +40,8 @@ static void	print_append(t_to_write *print, char *str, size_t size)
 		new = ft_memalloc_wrapper(size);
 	if (!new)
 		return ;
-	ft_memcpy(new + print->size, str, size);
+	if (str)
+		ft_memcpy(new + print->size, str, size);
 	print->str = new;
 	print->size += size;
 }

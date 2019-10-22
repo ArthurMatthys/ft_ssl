@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/01 14:47:09 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 13:16:20 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 09:15:39 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,10 @@ void		*ft_memalloc_wrapper(size_t size)
 
 	ptr = ft_memalloc(size);
 	if (!ptr)
+	{
+		write(2, "Failed to malloc\n", 17);
 		exit(EXIT_FAILLURE);
+	}
 	else
 		return (ptr);
 }
