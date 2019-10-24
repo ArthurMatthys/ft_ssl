@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:40:58 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 10:53:33 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 11:59:54 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static void	print_cmd(const t_list_cmd *g_lst_cmd, int type)
 	ft_putstr_fd("\n", STDERR);
 }
 
-int				ssl_list_command(char *cmd, const t_list_cmd *g_lst_cmd)
+int			ssl_list_command(char *cmd, const t_list_cmd *g_lst_cmd)
 {
 	ft_putstr_fd("ft_ssl: Error \'", STDERR);
 	ft_putstr_fd(cmd, STDERR);

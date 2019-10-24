@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 10:34:33 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 08:41:00 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 11:59:24 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,7 +35,7 @@
 
 typedef struct		s_history
 {
-	char		*line;
+	char				*line;
 	struct s_history	*previous;
 	struct s_history	*next;
 }					t_history;
@@ -55,20 +55,21 @@ typedef struct		s_line_edit
 	t_history	*actual;
 }					t_line_edit;
 
-int		enablerawmode(void);
-int		disablerawmode(void);
-int		handle_stdin(const char *prompt, char **res, t_history **history);
+int					enablerawmode(void);
+int					disablerawmode(void);
+int					handle_stdin(const char *prompt,
+		char **res, t_history **history);
 
-char	*remove_nl(char *input);
-char	**stdin_to_argv(char **input);
-char	*get_res_echo(void);
-char	*read_line(const char *prompt, t_history **history);
+char				*remove_nl(char *input);
+char				**stdin_to_argv(char **input);
+char				*get_res_echo(void);
+char				*read_line(const char *prompt, t_history **history);
 
-int		clean_stdin(char **input);
+int					clean_stdin(char **input);
 
-void	add_history(t_history **history, char *new_line);
-void	move_history(t_line_edit *line);
-void	free_history(t_history *history);
+void				add_history(t_history **history, char *new_line);
+void				move_history(t_line_edit *line);
+void				free_history(t_history *history);
 
-void	refresh_line(t_line_edit *line);
+void				refresh_line(t_line_edit *line);
 #endif

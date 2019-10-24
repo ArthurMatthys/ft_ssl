@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/09/30 16:05:59 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 10:51:27 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 11:59:47 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,6 @@ const t_list_cmd g_lst_cmd[] =
 	{"sha512", &ssl_hash, 4, T_DGST},
 	{"sha512224", &ssl_hash, 5, T_DGST},
 	{"sha512256", &ssl_hash, 6, T_DGST},
-//	{"whirlpool", &ssl_hash, 7, T_DGST},
 	{NULL, NULL, 0, 0}
 };
 
@@ -42,8 +41,6 @@ const t_hash_cmd	g_dgst_cmd[] =
 		&ft_sha512224_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
 	{"sha512256", "SHA512256", &ft_sha512256_init, &ft_sha512_update,
 		&ft_sha512256_close, {"-s", "-r", "-q", "-p"}, 128, 8, 8, 16, 1},
-//	{"whirlpool", "WHIRLPOOL", &ft_whirlpool_init, &ft_whirlpool_update,
-//		&ft_whirlpool_close, {"-s", "-r", "-q", "-p"}, 64, , 8
 };
 
 void	get_command(int argc, char **argv, char *cmd)
