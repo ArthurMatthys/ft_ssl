@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:29:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 11:00:43 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 15:42:05 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,10 @@ int				handle_stdin(const char *prompt, char **res,
 		if (c == CTRL_D || c == ENTER)
 		{
 			if (!line.size_buff)
+			{
+				free(line.buff);
 				return (0);
+			}
 			*res = ft_strdup(line.buff);
 			free(line.buff);
 			return (line.size_buff);
