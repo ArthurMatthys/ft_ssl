@@ -1,6 +1,6 @@
 #/!bin/bash
-SHA256_PERSO="./ft_ssl sha256 "
-SHA256_ORIGIN="shasum -a 256 | cut -d' ' -f 1 "
+SHA256_PERSO="./ft_ssl sha256 -q "
+SHA256_ORIGIN="shasum -a 256"
 
 COL=$(tput cols)
 RES_POS=$(($COL - 4))
@@ -17,10 +17,10 @@ test_sha256 ()
 	if [ -z $3 ]
 	then
 		(eval ${SHA256_PERSO} $2) > my_hash
-		(eval ${SHA256_ORIGIN} $2) > origin_hash
+		(eval ${SHA256_ORIGIN} $2 | cut -d' ' -f 1 ) > origin_hash
 	else
 		(eval $3 "$4" | eval ${SHA256_PERSO} $2) > my_hash
-		(eval $3 "$4" | eval ${SHA256_ORIGIN} $2) > origin_hash 
+		(eval $3 "$4" | eval ${SHA256_ORIGIN} $2) | cut -d' ' -f 1  > origin_hash 
 	fi
 
 	diff my_hash origin_hash

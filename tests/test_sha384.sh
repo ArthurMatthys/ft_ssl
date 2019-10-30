@@ -1,6 +1,6 @@
 #/!bin/bash
-SHA384_PERSO="./ft_ssl sha384 "
-SHA384_ORIGIN="shasum -a 384 | cut -d' ' -f 1 "
+SHA384_PERSO="./ft_ssl sha384 -q "
+SHA384_ORIGIN="shasum -a 384"
 
 COL=$(tput cols)
 RES_POS=$(($COL - 4))
@@ -17,10 +17,10 @@ test_sha384 ()
 	if [ -z $3 ]
 	then
 		(eval ${SHA384_PERSO} $2) > my_hash
-		(eval ${SHA384_ORIGIN} $2) > origin_hash
+		(eval ${SHA384_ORIGIN} $2 | cut -d' ' -f 1 ) > origin_hash
 	else
 		(eval $3 "$4" | eval ${SHA384_PERSO} $2) > my_hash
-		(eval $3 "$4" | eval ${SHA384_ORIGIN} $2) > origin_hash 
+		(eval $3 "$4" | eval ${SHA384_ORIGIN} $2) | cut -d' ' -f 1  > origin_hash 
 	fi
 
 	diff my_hash origin_hash

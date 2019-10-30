@@ -1,6 +1,6 @@
 #/!bin/bash
-SHA224_PERSO="./ft_ssl sha224 "
-SHA224_ORIGIN="shasum -a 224 | cut -d' ' -f 1 "
+SHA224_PERSO="./ft_ssl sha224 -q "
+SHA224_ORIGIN="shasum -a 224"
 
 COL=$(tput cols)
 RES_POS=$(($COL - 4))
@@ -17,12 +17,12 @@ test_sha224 ()
 	if [ -z $3 ]
 	then
 		(eval ${SHA224_PERSO} $2) > my_hash
-		(eval ${SHA224_ORIGIN} $2) > origin_hash
+		printf "Yooo"
+		(eval ${SHA224_ORIGIN} $2 | cut -d ' ' -f 1) > origin_hash
 	else
 		(eval $3 "$4" | eval ${SHA224_PERSO} $2) > my_hash
-		(eval $3 "$4" | eval ${SHA224_ORIGIN} $2) > origin_hash 
+		(eval $3 "$4" | eval ${SHA224_ORIGIN} $2) | cut -d ' ' -f 1 > origin_hash 
 	fi
-
 	diff my_hash origin_hash
 	if [ $? -eq 0 ]
 	then

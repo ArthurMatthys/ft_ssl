@@ -1,6 +1,6 @@
 #/!bin/bash
-SHA512256_PERSO="./ft_ssl sha512256 "
-SHA512256_ORIGIN="shasum -a 512256 | cut -d' ' -f 1 "
+SHA512256_PERSO="./ft_ssl sha512256 -q "
+SHA512256_ORIGIN="shasum -a 512256"
 
 COL=$(tput cols)
 RES_POS=$(($COL - 4))
@@ -17,10 +17,10 @@ test_sha512256 ()
 	if [ -z $3 ]
 	then
 		(eval ${SHA512256_PERSO} $2) > my_hash
-		(eval ${SHA512256_ORIGIN} $2) > origin_hash
+		(eval ${SHA512256_ORIGIN} $2) | cut -d' ' -f 1  > origin_hash
 	else
 		(eval $3 "$4" | eval ${SHA512256_PERSO} $2) > my_hash
-		(eval $3 "$4" | eval ${SHA512256_ORIGIN} $2) > origin_hash 
+		(eval $3 "$4" | eval ${SHA512256_ORIGIN} $2) | cut -d' ' -f 1  > origin_hash 
 	fi
 
 	diff my_hash origin_hash
