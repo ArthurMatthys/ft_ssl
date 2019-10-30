@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:29:52 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 09:40:35 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 10:45:42 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,11 +45,10 @@ int				handle_stdin(const char *prompt, char **res,
 		t_history **history)
 {
 	char		c;
-	int			nread;
 	t_line_edit	line;
 
 	init_line(&line, prompt, history);
-	while ((nread = read(0, &c, 1) > 0))
+	while (read(0, &c, 1 > 0))
 	{
 		if (c == CTRL_D || c == ENTER)
 		{
