@@ -90,6 +90,7 @@ test_md5 'stdin 2' '-p' 'echo ' 'Bonjourrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 test_md5 'no flag 0' 'auteur' 
 test_md5 'no flag 1' 'Makefile' 
 test_md5 'no flag 2' 'ft_ssl' 
+test_md5 'no flag 2' '/bin/*' 
 
 test_md5 'files 0' '-p' 'cat ' 'auteur'
 test_md5 'files 1' '-p' 'cat ' 'src/ft_ssl.c'

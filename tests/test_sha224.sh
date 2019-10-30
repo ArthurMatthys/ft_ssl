@@ -45,6 +45,6 @@ test_sha224 'long input 0' '' 'echo ' 'dailleurs clcreuso je suis dsol mais mes 
 
 test_sha224 'file 0' '' 'cat ' 'auteur'
 test_sha224 'file 1' '' 'cat ' 'Makefile'
-test_sha224 'file 2' '' 'cat ' 'ft_ssl'
+test_sha224 'file 2' 'ft_ssl'
 
 exit ${RES}

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 11:33:13 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:43:07 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 09:39:14 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,13 +38,15 @@ static int	update_nbr_block(unsigned *stat, size_t *nbr_char, int c)
 	if (c < 3)
 	{
 		if (*stat & quote[c])
+		{
+			(*stat) += (1 << 3);
 			*stat &= 0xFFFFFFF8;
+		}
 		else if (!(*stat & 0x07))
 			*stat |= quote[c];
-		else
-			return (1);
+		return (1);
 	}
-	if (*nbr_char || c < 3)
+	if (*nbr_char && !(*stat & 0x07))
 		(*stat) += (1 << 3);
 	*nbr_char = 0;
 	return (1);

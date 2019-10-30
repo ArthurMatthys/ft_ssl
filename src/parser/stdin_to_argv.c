@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/19 12:00:47 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:56:06 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 09:34:17 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,7 @@ static char		*get_arg(char *input, int *n)
 
 	chr = NULL;
 	new_len = 0;
-	if (input[*n] == ' ')
+	if (input[*n] == ' ' || *n)
 	{
 		new_arg = ft_strndup(input, *n);
 		*n += get_next_word(input + *n);
@@ -79,7 +79,6 @@ static char		**split_to_argv(char **input, int nbr_arg)
 	res = (char **)ft_memalloc_wrapper(sizeof(char *) * (nbr_arg + 1));
 	while (i < (int)ft_strlen(cpy))
 	{
-		ft_printf("|%s|\n", cpy + i);
 		n = next_spec_char(cpy + i);
 		if (n == -1)
 		{
@@ -100,8 +99,6 @@ char			**stdin_to_argv(char **input)
 	char	**res;
 
 	nbr_arg = clean_stdin(input);
-	ft_printf("nbr_arg : %d\n", nbr_arg);
-	ft_printf("input : |%s|\n", *input);
 	res = split_to_argv(input, nbr_arg);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: amatthys <amatthys@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 11:29:58 by amatthys     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:52:16 by amatthys    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 08:22:32 by amatthys    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,6 @@ void				stdin_to_cmd(void)
 		input = remove_nl(input);
 		add_history(&history, input);
 		input = string_to_argv(input);
-		ft_printf("input : |%s|\n", input);
 		new_argv = stdin_to_argv(&input);
 		while (new_argv[i])
 			i++;

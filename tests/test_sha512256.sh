@@ -45,6 +45,7 @@ test_sha512256 'long input 0' '' 'echo ' 'dailleurs clcreuso je suis dsol mais m
 
 test_sha512256 'file 0' '' 'cat ' 'auteur'
 test_sha512256 'file 1' '' 'cat ' 'Makefile'
-test_sha512256 'file 2' '' 'cat ' 'ft_ssl'
+test_sha512256 'file 2' 'ft_ssl'
+test_sha512256 'no flag 0' '/bin/*' 
 
 exit ${RES}
